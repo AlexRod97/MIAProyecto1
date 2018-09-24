@@ -5,6 +5,8 @@
  */
 package miaproyecto1;
 
+import Forms.MainForm;
+
 /**
  *
  * @author rodri
@@ -16,6 +18,9 @@ public class MIAProyecto1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        MainForm mainForm = new MainForm(); 
+        mainForm.show();
+        mainForm.setLocationRelativeTo(null);
     }
     
 }
