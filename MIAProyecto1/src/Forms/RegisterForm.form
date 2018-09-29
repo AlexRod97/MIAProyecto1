@@ -62,6 +62,10 @@
                               <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                               <Component id="lblRegistrar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -120,6 +124,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRol" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -127,7 +133,7 @@
                           <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="tfApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblApellido" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -137,19 +143,16 @@
                           <Component id="tfPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRegistrar" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="btnCancelar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -219,7 +222,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfPassword">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPasswordActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPasswordKeyReleased"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfUsuario">
@@ -261,6 +264,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFotoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSeguridad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nivel de seguridad: 0"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
