@@ -7,9 +7,11 @@ package Forms;
 
 import Classes.Usuario;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -23,8 +25,10 @@ import javax.swing.JOptionPane;
 public class RegisterForm extends javax.swing.JFrame {
 
     String pathFoto; 
-    boolean passwordResult; 
+    boolean passwordResult;
+    boolean firstEntry = true;
     Usuario newUser = new Usuario();
+    Classes.Secuencial secuencial;
    
     
     public RegisterForm() {
@@ -243,13 +247,26 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-        Date date;
-        try {
-            date = format.parse(tfNacimiento.getText());            
-            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), date, tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
-            date.getDate();
-        } catch (ParseException ex) {
+       
+        try {            
+            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
+            
+            if (tfRol.getText().equals("1") && firstEntry == true) {
+                firstEntry = false;
+                
+                try{
+                  secuencial = new Classes.Secuencial("Usuario",tfUsuario.getText()
+                       ,"5");
+                  
+                  //formatear el archivo Usuario
+                  //Classes.Secuencial.Escribir(pathFoto, pathFoto, pathFoto)
+                }catch (IOException e){
+                    
+                    e.printStackTrace();
+                }
+                
+            }
+        } catch (Exception ex) {
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }//GEN-LAST:event_btnRegistrarActionPerformed

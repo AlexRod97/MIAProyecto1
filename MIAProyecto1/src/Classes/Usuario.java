@@ -26,7 +26,7 @@ public class Usuario{
     private String Apellido; 
     private String Password; 
     private int Rol; 
-    private Date Fecha_Nacimiento; 
+    private String Fecha_Nacimiento; 
     private String Correo_Alterno; 
     private int Telefono; 
     private String Path_Fotografia; 
@@ -36,7 +36,7 @@ public class Usuario{
     public Usuario() {    
     }
 
-    public Usuario(String Usuario, String Nombre, String Apellido, String Password, int Rol, Date Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus) {
+    public Usuario(String Usuario, String Nombre, String Apellido, String Password, int Rol, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus) {
         this.Usuario = Usuario;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
@@ -95,11 +95,11 @@ public class Usuario{
         this.Rol = Rol;
     }
 
-    public Date getFecha_Nacimiento() {
+    public String getFecha_Nacimiento() {
         return Fecha_Nacimiento;
     }
 
-    public void setFecha_Nacimiento(Date Fecha_Nacimiento) {
+    public void setFecha_Nacimiento(String Fecha_Nacimiento) {
         this.Fecha_Nacimiento = Fecha_Nacimiento;
     }
 
