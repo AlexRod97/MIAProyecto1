@@ -31,11 +31,7 @@ public class Utilidades {
         //tomar un registro de la bitacora, ordenar e introducir
         FileReader bitReader = new FileReader(bitacora);
         BufferedReader bitBuff = new BufferedReader(bitReader);
-        
-
-        
-        
-        
+ 
         while(!bitBuff.equals(null)){
             
             FileReader MasterReader = new FileReader(Master);

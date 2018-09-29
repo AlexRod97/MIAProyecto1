@@ -258,9 +258,10 @@ public class Secuencial {
         }
         
         
-        return false;
+        return true;
     }
     
+    //NotImplemented
     public static boolean Buscar(){
         
         
