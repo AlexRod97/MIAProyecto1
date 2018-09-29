@@ -21,7 +21,7 @@ public class MainForm extends javax.swing.JFrame {
         
         try{
             
-           ArchivoSecuencial = new Classes.Secuencial("usuario");
+           //ArchivoSecuencial = new Classes.Secuencial("usuario");
            
         }catch (Exception e){
             e.printStackTrace();

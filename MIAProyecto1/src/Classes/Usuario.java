@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -18,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author rodri
  */
-public class Usuario implements IArchivo{
+public class Usuario{
     
     private String Usuario; 
     private String Nombre;
@@ -155,27 +156,6 @@ public class Usuario implements IArchivo{
            throw new RuntimeException(e);
         }         
     }
-
-    @Override
-    public boolean EscribirDatos(String datos, File Archivo) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<String> ObtenerDatos() throws ArrayIndexOutOfBoundsException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean CrearArchivo() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean CerrarArchivo() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
    public static class Puntuaciones {
     
@@ -186,9 +166,9 @@ public class Usuario implements IArchivo{
        password = pwd; 
        length = password.length();
        CountCharacters(); 
-   }
+    }
    
-   private void CountCharacters() {
+    private void CountCharacters() {
      
        for (int i = 0; i < length; i++) {
          char caracter = password.charAt(i); 
@@ -207,7 +187,7 @@ public class Usuario implements IArchivo{
          }
                  
        }
-   }   
+    }   
  
    
    public int Verificar() {
@@ -233,10 +213,7 @@ public class Usuario implements IArchivo{
         }
                
        return puntuacionFinal; 
-   }
+    }
    
-  
-    
-   }
-        
+  }        
 }

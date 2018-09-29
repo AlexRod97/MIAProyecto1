@@ -202,11 +202,13 @@ public class Secuencial {
             String nombreAdmin)
     throws IOException, NullPointerException{
         
-        File tmpDir = new File(nombreMaster);   
+        File tmpDir = new File("C:\\MEIA\\"+ nombreMaster + ".txt");   
         FileWriter fw;
         BufferedWriter bw;
         FileReader fr;
         BufferedReader br;
+        
+        File bitacora = new File("C:\\MEIA\\bitacora_" + nombreMaster + ".txt");
         
         if (tmpDir.exists()) {
             
@@ -233,16 +235,12 @@ public class Secuencial {
             Integer.getInteger(cant_reg[1]) < Integer.getInteger(max_reorg[1])){
                 
                 //se abre un buffer de datos hacia la bitacora
-                File bitacora = new File("C:\\MEIA\\bitacora_" + nombreMaster
-                + ".txt");
-                
                 fw = new FileWriter(bitacora);
                 bw = new BufferedWriter(fw);
                 
                 //se escribe el dato hacia el buffer de bitacora
                 bw.append(dato);
                 bw.append("\r\n");
-                
                 bw.close();
                 
                
@@ -250,9 +248,20 @@ public class Secuencial {
                EscribirArchivoDesc(nombreAdmin, nombreMaster);
                 
                         
+            }else{
+                //se mete todo al archivo Maestro
+                Utilidades.BubbleSort(tmpDir, bitacora);
             }
             
+        }else{
+            throw new IOException("El archivo no existe");
         }
+        
+        
+        return false;
+    }
+    
+    public static boolean Buscar(){
         
         
         return false;
