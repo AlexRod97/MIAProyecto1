@@ -5,15 +5,28 @@
  */
 package Forms;
 
+
 /**
  *
  * @author rodri
  */
 public class MainForm extends javax.swing.JFrame {
-
+    
+    
+    
+    Classes.Secuencial ArchivoSecuencial;
     
     public MainForm() {
         initComponents();
+        
+        try{
+            
+           ArchivoSecuencial = new Classes.Secuencial("usuario");
+           
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
     }
 
     /**
