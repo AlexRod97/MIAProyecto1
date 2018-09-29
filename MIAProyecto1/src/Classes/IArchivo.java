@@ -15,11 +15,7 @@ import java.util.List;
  */
 public interface IArchivo {
     
-    /**
-     *
-     * @param datos
-     * @param Archivo
-     */
+ 
     public abstract boolean EscribirDatos(String datos, File Archivo) 
             throws IOException;
     
@@ -29,4 +25,5 @@ public interface IArchivo {
     public abstract boolean CrearArchivo() throws IOException;
     
     public abstract boolean CerrarArchivo() throws IOException;
+    
 }
