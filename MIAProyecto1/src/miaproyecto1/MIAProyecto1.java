@@ -5,7 +5,7 @@
  */
 package miaproyecto1;
 
-import Forms.MainForm;
+import Forms.LoginForm;
 
 /**
  *
@@ -18,7 +18,7 @@ public class MIAProyecto1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        MainForm mainForm = new MainForm(); 
+        LoginForm mainForm = new LoginForm(); 
         mainForm.show();
         mainForm.setLocationRelativeTo(null);
     }

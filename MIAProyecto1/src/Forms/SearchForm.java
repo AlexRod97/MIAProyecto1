@@ -32,7 +32,8 @@ public class SearchForm extends javax.swing.JFrame {
         tfBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Search");
 
         jLabel1.setText("Buscar:");
 

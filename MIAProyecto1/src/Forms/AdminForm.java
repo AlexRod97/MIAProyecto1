@@ -33,7 +33,8 @@ public class AdminForm extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Admin menu");
 
         btnEditar.setText("Editar perfil");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
