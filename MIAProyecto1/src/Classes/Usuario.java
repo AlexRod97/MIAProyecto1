@@ -191,7 +191,7 @@ public class Usuario{
     line.append(ToFixedSizeString(Correo_Alterno, 40));
     line.append("|");
 
-    line.append(Telefono);
+    line.append(ToFixedSizeString(String.valueOf(Telefono), 8));
     line.append("|");
 
     line.append(ToFixedSizeString(Path_Fotografia, 200));
