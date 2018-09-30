@@ -262,10 +262,9 @@ public class Secuencial {
                 
                 //se escribe el dato hacia el buffer de bitacora, la suma
                 //debe dar 392 caracteres
-                int offset = 392;
-                offset = offset * Integer.parseInt(cant_reg[1].trim());
-                bw.append(dato, offset, dato.length());
-                bw.append("\r\n");
+                //int offset = 391;
+               // offset = offset * Integer.parseInt(cant_reg[1].trim());
+                bw.append(dato);
                 bw.flush();
                 bw.close();
                 
@@ -291,7 +290,6 @@ public class Secuencial {
     public static String Buscar(String idUsuario, String Master)
             throws IOException{
         
-        int offset = 392;
         
         FileReader fr = new FileReader("C:\\MEIA\\" + Master + ".txt");
         BufferedReader br = new BufferedReader(fr);
@@ -321,7 +319,7 @@ public class Secuencial {
             break;
          data = br.readLine();   
         }
-        
+        br.close();
         return data;
     }
 }

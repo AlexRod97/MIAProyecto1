@@ -176,7 +176,7 @@ public class Usuario{
     line.append(ToFixedSizeString(Nombre, 30));
     line.append("|");
 
-    line.append(ToFixedSizeString(Apellido, 40));
+    line.append(ToFixedSizeString(Apellido, 30));
     line.append("|");
 
     line.append(ToFixedSizeString(Password,40));
@@ -198,6 +198,7 @@ public class Usuario{
     line.append("|");
 
     line.append(Estatus);
+    line.append("\r\n");
 
     int cant = line.length();
     
