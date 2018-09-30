@@ -159,7 +159,8 @@ public class Usuario{
     
     private String ToFixedSizeString(String word, int count) {
     String result = ""; 	
-      for(int i = 0; i < count; i++) {
+    int complement = count - word.length();
+      for(int i = 0; i < complement; i++) {
 	result += "&";
       }
         return result+word;        
@@ -184,7 +185,7 @@ public class Usuario{
     line.append(Rol);
     line.append("|");
 
-    line.append(Fecha_Nacimiento);
+    line.append(ToFixedSizeString(Fecha_Nacimiento,10));
     line.append("|");
 
     line.append(ToFixedSizeString(Correo_Alterno, 40));
@@ -198,6 +199,8 @@ public class Usuario{
 
     line.append(Estatus);
 
+    int cant = line.length();
+    
     return line.toString();
     }
     
