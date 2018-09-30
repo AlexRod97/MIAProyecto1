@@ -11,6 +11,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -25,61 +29,55 @@ public class Utilidades {
      * @return
      * @throws IOException 
      */
-    public static boolean BubbleSort(String Master) 
+    public static boolean VolcarMaster(String Master) 
             throws IOException{
         
-        //tomar un registro de la bitacora, ordenar e introducir
-        FileReader bitReader = new FileReader("C:\\MEIA\\bitacora_" + Master + ".txt");
-        BufferedReader bitBuff = new BufferedReader(bitReader);
-        boolean flag = false;
- 
-        while(flag != true){
+        File tmpDir = new File("C:\\MEIA\\tempVolcado.txt");
+        
+        //se abre un buffer hacia la bitacora
+        String pathBitacora = "C:\\MEIA\\bitacora_" + Master + ".txt";
+        FileReader fr = new FileReader(pathBitacora);
+        BufferedReader br = new BufferedReader(fr);
+        
+        List<String> datosBitacora = br.lines().collect(Collectors.toList());
+        
+        //se leen los datos de master
+        String pathMaster = "C:\\MEIA\\" + Master + ".txt";
+        fr = new FileReader(pathMaster);
+        br = new BufferedReader(fr);
+        
+        List<String> datosMaster = br.lines().collect(Collectors.toList());
+        
+        br.close();
+        
+        if (datosMaster != null) {
             
-            FileReader MasterReader = new FileReader("C:\\MEIA\\" + Master + ".txt");
-            BufferedReader MasterBuff = new BufferedReader(MasterReader);
+            //ordena los datos
+            datosMaster.addAll(datosBitacora);
             
-            String x = bitBuff.readLine();
-            String[] datosBuff = x.trim().split("\\|");
+            List<String> sorted = (List<String>) datosMaster.stream()
+                    .sorted(Comparator.comparing(e -> e.substring(0,20)));
             
-            
-            while(flag == false){
-                
-                int offset = 0;
-                String y = MasterBuff.readLine();
-                
-                if (!y.equals("")) {
-                    
-                 String[] datosMaster = y.trim().split("\\|");
-                 
-                 int min = datosMaster[0].compareTo(datosBuff[0]);
-                 
-                 switch(min){
-                     
-                     //es mas pequeño Master
-                     case -1:
-                         offset += x.length();
-                         break;
-                      
-                     //es mas grande Master
-                     case 1:
-                         MasterBuff.close();
-                         
-                         FileWriter fw = new FileWriter(Master);
-                         BufferedWriter bw = new BufferedWriter(fw);
-                         
-                         //escribe al archivo y accede a posicion mediante
-                         //un offset
-                         bw.write(x, offset, x.length());
-                         bw.flush();
-                         bw.close();
-                         flag = true;
-                        break;
-                    }
-                } 
+            FileWriter fw = new FileWriter(tmpDir);
+            BufferedWriter bw = new BufferedWriter(fw);
+                              
+            for (int i = 0; i < sorted.size(); i++) {
+                bw.append(sorted.get(i));
             }
             
+            bw.close();
+            
+            File master = new File(pathMaster);
+            
+            tmpDir.renameTo(master);
+            
+            
+            
         }
+        
+        
        return true;
+              
     }
 }
   

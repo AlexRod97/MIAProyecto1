@@ -279,7 +279,7 @@ public class Secuencial {
                         
             }else{
                 //se mete todo al archivo Maestro
-                Utilidades.BubbleSort(nombreMaster);
+                Utilidades.VolcarMaster(nombreMaster);
             }
             
         }else{
@@ -313,6 +313,7 @@ public class Secuencial {
         
         br.close();
         
+        //se busca en bitacora
         fr = new FileReader("C:\\MEIA\\bitacora_" + Master + ".txt");
         br = new BufferedReader(fr);
         
