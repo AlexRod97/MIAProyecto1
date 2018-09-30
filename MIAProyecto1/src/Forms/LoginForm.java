@@ -5,6 +5,11 @@
  */
 package Forms;
 
+import Classes.Secuencial;
+import Classes.Usuario;
+import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -128,21 +133,40 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        int rol = 0; 
         
-        if (rol == 0) {
-            AdminForm admin = new AdminForm(); 
-            admin.show();
+        Secuencial secuencial = new Secuencial();
+        Usuario newUser = new Usuario(); 
+        String user = tfUsuario.getText(); 
+        String password = newUser.Encriptar(tfPassword.getText());
+        
+        try {            
+        String line = secuencial.Buscar(tfUsuario.getText(), "Usuario");
+        newUser = newUser.getFixedSizeString(line);
+        
+            if(password.equals(newUser.getPassword())) {                
+             switch (newUser.getRol()) {
+                case 0:
+                    AdminForm admin = new AdminForm();
+                    admin.show();
+                    break;
+                case 1:
+                    UserForm userForm = new UserForm();
+                    userForm.show();
+                    break;
+            
+                default:      
+                    //Error en inicio de sesión
+                    break;
+             }
+            }
+            else {
+            JOptionPane.showMessageDialog(null, "La contraseña ingresada no es correcta", "Error",WIDTH);
+            }
+        
+        
             
         }
-        else if (rol == 1) {            
-            UserForm user = new UserForm(); 
-            user.show();
-            
-        }
-        else {
-            
-            //Error en inicio de sesión
+        catch(Exception e) {
             
         }
     }//GEN-LAST:event_btnLoginActionPerformed

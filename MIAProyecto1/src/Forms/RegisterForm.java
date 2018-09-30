@@ -185,6 +185,12 @@ public class RegisterForm extends javax.swing.JFrame {
 
         lblEstatus.setText("Estatus:");
 
+        tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,10 +315,13 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        try {     
-            pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
-            selectedFile = new File(pathFoto);
-            ImageIO.write(image,"jpg",selectedFile);         
+        if(passwordSecure) {
+            try {                 
+            if(image != null) {
+                pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
+                 selectedFile = new File(pathFoto);
+                ImageIO.write(image,"jpg",selectedFile);                 
+            }        
             newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
             Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
@@ -329,7 +338,7 @@ public class RegisterForm extends javax.swing.JFrame {
                   String add = newUser.setFixedSizeString();
                   Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
-                   
+                   JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
                 }catch (IOException e){
                     
                     e.printStackTrace();
@@ -339,15 +348,14 @@ public class RegisterForm extends javax.swing.JFrame {
                     Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
             }
-            
-            
-           
-                  
-                  
         } catch (Exception ex) {
 
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
+            
+       } else {
+            JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH); 
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
@@ -425,6 +433,11 @@ public class RegisterForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 1 caracteres"); 
         }
     }//GEN-LAST:event_tfEstatusKeyTyped
+
+    private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
+        String password = tfPassword.getText(); 
+         passwordSecure = CheckPasswordResults(password);
+    }//GEN-LAST:event_tfPasswordKeyReleased
 
     public boolean CheckPasswordResults(String password) {     
         

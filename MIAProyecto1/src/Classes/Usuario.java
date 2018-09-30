@@ -166,6 +166,7 @@ public class Usuario{
         return result+word;        
     }
     
+    
     public String setFixedSizeString() {
         
     StringBuilder line = new StringBuilder(); 
@@ -202,6 +203,36 @@ public class Usuario{
 
     
     return line.toString();
+    }
+    
+    public String fromFixedSizeString (String word) {
+        StringBuilder newWord = new StringBuilder(); 
+        int cont = 0; 
+        char amber = '&';
+        for (int i = 0; i < word.length(); i++) {
+            char pos = word.charAt(i); 
+            if(pos != amber) {
+                newWord.append(pos);                 
+            }            
+                        
+        }
+        return newWord.toString();
+    }
+    
+    public Usuario getFixedSizeString(String cadena) {
+        String[] splited = cadena.split("\\|");             
+        this.setUsuario(fromFixedSizeString(splited[0]));
+        this.setNombre(fromFixedSizeString(splited[1]));
+        this.setApellido(fromFixedSizeString(splited[2]));
+        this.setPassword(fromFixedSizeString(splited[3]));
+        this.setRol(Integer.valueOf(fromFixedSizeString(splited[4])));
+        this.setFecha_Nacimiento(fromFixedSizeString(splited[5]));
+        this.setCorreo_Alterno(fromFixedSizeString(splited[6]));
+        this.setTelefono(Integer.valueOf(fromFixedSizeString(splited[7])));
+        this.setPath_Fotografia(fromFixedSizeString(splited[8]));
+        this.setEstatus(Integer.valueOf(fromFixedSizeString(splited[9])));
+        
+        return this;
     }
     
     
