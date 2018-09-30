@@ -287,11 +287,42 @@ public class Secuencial {
         return true;
     }
     
-    //NotImplemented
-    public static boolean Buscar(){
+    
+    public static String Buscar(String idUsuario, String Master)
+            throws IOException{
         
+        int offset = 392;
         
-        return false;
+        FileReader fr = new FileReader("C:\\MEIA\\" + Master + ".txt");
+        BufferedReader br = new BufferedReader(fr);
+        
+        String data = br.readLine();
+        
+        //se comienza buscando en master
+        while(data != null){
+            
+         String[] temp = data.trim().split("\\|");
+         if(temp[0].trim().equals(idUsuario))
+            break;
+         data = br.readLine();
+        }
+        
+        br.close();
+        
+        fr = new FileReader("C:\\MEIA\\bitacora_" + Master + ".txt");
+        br = new BufferedReader(fr);
+        
+        data = br.readLine();
+        
+        while(data != null){
+            
+         String[] temp = data.trim().split("\\|");
+         if(temp[0].trim().equals(idUsuario))
+            break;
+         data = br.readLine();   
+        }
+        
+        return data;
     }
 }
     
