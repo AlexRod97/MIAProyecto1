@@ -473,6 +473,7 @@ public class Secuencial {
                  RAF.close();
                 
                  return true;
+                 
              }else{
                  count = count + 1;
              }
