@@ -116,11 +116,49 @@ public class RegisterForm extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfPasswordKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyTyped(evt);
+            }
         });
 
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
+            }
+        });
+        tfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfUsuarioKeyTyped(evt);
+            }
+        });
+
+        tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNombreKeyTyped(evt);
+            }
+        });
+
+        tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfApellidoKeyTyped(evt);
+            }
+        });
+
+        tfNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNacimientoKeyTyped(evt);
+            }
+        });
+
+        tfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfCorreoKeyTyped(evt);
+            }
+        });
+
+        tfTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfTelefonoKeyTyped(evt);
             }
         });
 
@@ -143,6 +181,18 @@ public class RegisterForm extends javax.swing.JFrame {
         lblSeguridad.setText("Nivel de seguridad: 0");
 
         lblRol.setText("Rol:");
+
+        tfRol.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfRolKeyTyped(evt);
+            }
+        });
+
+        tfEstatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfEstatusKeyTyped(evt);
+            }
+        });
 
         lblEstatus.setText("Estatus:");
 
@@ -258,7 +308,7 @@ public class RegisterForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -338,6 +388,69 @@ public class RegisterForm extends javax.swing.JFrame {
     private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordActionPerformed
+
+    private void tfUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUsuarioKeyTyped
+        if(tfUsuario.getText().length() >= 20) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 20 caracteres"); 
+        }
+    }//GEN-LAST:event_tfUsuarioKeyTyped
+
+    private void tfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNombreKeyTyped
+        if(tfNombre.getText().length() >= 30) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 30 caracteres"); 
+        }
+    }//GEN-LAST:event_tfNombreKeyTyped
+
+    private void tfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfApellidoKeyTyped
+        if(tfApellido.getText().length() >= 30) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 30 caracteres"); 
+        }
+    }//GEN-LAST:event_tfApellidoKeyTyped
+
+    private void tfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyTyped
+        if(tfPassword.getText().length() >= 40) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 40 caracteres"); 
+        }
+    }//GEN-LAST:event_tfPasswordKeyTyped
+
+    private void tfRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfRolKeyTyped
+        if(tfRol.getText().length() >=1 ) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 1 caracter"); 
+        }
+    }//GEN-LAST:event_tfRolKeyTyped
+
+    private void tfNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNacimientoKeyTyped
+       if(tfNacimiento.getText().length() >= 10) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 10 caracteres"); 
+        }
+    }//GEN-LAST:event_tfNacimientoKeyTyped
+
+    private void tfCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCorreoKeyTyped
+       if(tfCorreo.getText().length() >= 40) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 40 caracteres"); 
+        }
+    }//GEN-LAST:event_tfCorreoKeyTyped
+
+    private void tfTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTelefonoKeyTyped
+        if(tfTelefono.getText().length() >= 8) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 8 caracteres"); 
+        }
+    }//GEN-LAST:event_tfTelefonoKeyTyped
+
+    private void tfEstatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEstatusKeyTyped
+        if(tfEstatus.getText().length() >= 1) {
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 1 caracteres"); 
+        }
+    }//GEN-LAST:event_tfEstatusKeyTyped
 
     public boolean CheckPasswordResults(String password) {     
         

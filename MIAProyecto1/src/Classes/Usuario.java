@@ -176,7 +176,7 @@ public class Usuario{
     line.append(ToFixedSizeString(Nombre, 30));
     line.append("|");
 
-    line.append(ToFixedSizeString(Apellido, 40));
+    line.append(ToFixedSizeString(Apellido, 30));
     line.append("|");
 
     line.append(ToFixedSizeString(Password,40));
@@ -191,7 +191,7 @@ public class Usuario{
     line.append(ToFixedSizeString(Correo_Alterno, 40));
     line.append("|");
 
-    line.append(Telefono);
+    line.append(ToFixedSizeString(String.valueOf(Telefono), 8));
     line.append("|");
 
     line.append(ToFixedSizeString(Path_Fotografia, 200));

@@ -229,22 +229,39 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfPasswordActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPasswordKeyReleased"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPasswordKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfUsuario">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfUsuarioActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfUsuarioKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNombre">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfNombreKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfApellido">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfApellidoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNacimiento">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfNacimientoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCorreo">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfCorreoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefono">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfTelefonoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancelar">
       <Properties>
@@ -278,8 +295,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfRol">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfRolKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfEstatus">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfEstatusKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEstatus">
       <Properties>
