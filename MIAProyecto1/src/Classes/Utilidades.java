@@ -25,17 +25,17 @@ public class Utilidades {
      * @return
      * @throws IOException 
      */
-    public static File BubbleSort(File bitacora, File Master) 
+    public static boolean BubbleSort(String Master) 
             throws IOException{
         
         //tomar un registro de la bitacora, ordenar e introducir
-        FileReader bitReader = new FileReader(bitacora);
+        FileReader bitReader = new FileReader("C:\\MEIA\\bitacora_" + Master + ".txt");
         BufferedReader bitBuff = new BufferedReader(bitReader);
         boolean flag = false;
  
         while(flag != true){
             
-            FileReader MasterReader = new FileReader(Master);
+            FileReader MasterReader = new FileReader("C:\\MEIA\\" + Master + ".txt");
             BufferedReader MasterBuff = new BufferedReader(MasterReader);
             
             String x = bitBuff.readLine();
@@ -79,7 +79,7 @@ public class Utilidades {
             }
             
         }
-       return Master;
+       return true;
     }
 }
   

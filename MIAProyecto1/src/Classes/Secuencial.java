@@ -6,6 +6,9 @@
 package Classes;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -74,40 +77,42 @@ public class Secuencial {
         
         boolean flag = file.createNewFile();
         
-        FileWriter fw = new FileWriter(file);
-        BufferedWriter bw = new BufferedWriter(fw);
+        if (flag) {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
         
-        bw.append("nombre_simbolico: " + nombreMaster);
-        bw.append("\r\n");
-        //formateamos la fecha:
-        Date date = Calendar.getInstance().getTime();
+            bw.append("nombre_simbolico: " + nombreMaster);
+            bw.append("\r\n");
+            //formateamos la fecha:
+            Date date = Calendar.getInstance().getTime();
         
-        DateFormat formatter = new SimpleDateFormat(
+            DateFormat formatter = new SimpleDateFormat(
                 "EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
-        String today = formatter.format(date);
+            String today = formatter.format(date);
         
-        bw.append("fecha_creacion: " + today);
-        bw.append("\r\n");
-        bw.append("usuario_creacion: " + usuarioMaster);
-        bw.append("\r\n");
-        bw.append("fecha_modificacion: " );
-        bw.append("\r\n");
-        bw.append("usuario_modificacion: ");
-        bw.append("\r\n");
-        bw.append("#_registros: " + "0");
-        bw.append("\r\n");
-        bw.append("registros_activos: " + "0");
-        bw.append("\r\n");
-        bw.append("registros_inactivos: " + "0");
-        bw.append("\r\n");
+            bw.append("fecha_creacion: " + today);
+            bw.append("\r\n");
+            bw.append("usuario_creacion: " + usuarioMaster);
+            bw.append("\r\n");
+            bw.append("fecha_modificacion: " + "0");
+            bw.append("\r\n");
+            bw.append("usuario_modificacion: " + "0");
+            bw.append("\r\n");
+            bw.append("#_registros: " + "0");
+            bw.append("\r\n");
+            bw.append("registros_activos: " + "0");
+            bw.append("\r\n");
+            bw.append("registros_inactivos: " + "0");
+            bw.append("\r\n");
         
-        //deja en default si la reorganizacion maxima es 0
-        if (maxReorg.equals("0")) {
-            maxReorg = "5";
+            //deja en default si la reorganizacion maxima es 0
+            if (maxReorg.equals("0")) {
+                maxReorg = "5";
+            }
+            bw.append("max_reorganizacion: " + maxReorg);
+            bw.flush();
+            bw.close();
         }
-        bw.append("max_reorganizacion: " + maxReorg);
-        bw.flush();
-        bw.close();
         return flag;
     }
     
@@ -127,60 +132,66 @@ public class Secuencial {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         
-        List<String> datos = br.lines().collect(Collectors.toList());
-        List<String> info = new ArrayList<>();
+        boolean flag = file.exists();
         
-        for (int i = 0; i < datos.size(); i++){
-            String[] temp = datos.get(i).trim().split(":");
-            info.add(temp[1]);
-        }
+        if (flag) {
+            List<String> datos = br.lines().collect(Collectors.toList());
+            List<String> info = new ArrayList<>();
         
-        br.close();
+            for (int i = 0; i < datos.size(); i++){
+               
+                String[] temp = datos.get(i).trim().split(": ");
+                if (temp[1] == "" || temp[1] == null) {
+                    info.add("");
+                }
+                info.add(temp[1]);
+            }
         
-        FileWriter fw = new FileWriter(file);
-        BufferedWriter bw = new BufferedWriter(fw);
+            br.close();
         
-        
-        int numReg = Integer.parseInt(info.get(5));
-        numReg = numReg++;
-        
-        int activeReg = Integer.parseInt(info.get(6));
-        activeReg = activeReg++;
-        
-        int inactReg = Integer.parseInt(info.get(7));
-        inactReg = numReg - activeReg; 
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
         
         
-        bw.append("nombre_simbolico: " + nombreArchivoMaster);
-        bw.append("\r\n");
+            int numReg = Integer.parseInt(info.get(5));
+            numReg = numReg + 1;
+        
+            int activeReg = Integer.parseInt(info.get(6));
+            activeReg = activeReg + 1;
+        
+            int inactReg = Integer.parseInt(info.get(7));
+            inactReg = numReg - activeReg; 
+        
+        
+            bw.append("nombre_simbolico: " + nombreArchivoMaster);
+            bw.append("\r\n");
        
-        //formateamos la fecha:
-        Date date = Calendar.getInstance().getTime();
+            //formateamos la fecha:
+            Date date = Calendar.getInstance().getTime();
         
-        DateFormat formatter = new SimpleDateFormat(
-                "EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
-        String today = formatter.format(date);
+            DateFormat formatter = new SimpleDateFormat(
+                   "EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+            String today = formatter.format(date);
         
-        bw.append("fecha_creacion: " + info.get(1));
-        bw.append("\r\n");
-        bw.append("usuario_creacion: " + info.get(2));
-        bw.append("\r\n");
-        bw.append("fecha_modificacion: " + today);
-        bw.append("\r\n");
-        bw.append("usuario_modificacion: " + adminUser);
-        bw.append("\r\n");
-        bw.append("#_registros: " + info.get(5));
-        bw.append("\r\n");
-        bw.append("registros_activos: " + activeReg);
-        bw.append("\r\n");
-        bw.append("registros_inactivos: " + inactReg);
-        bw.append("\r\n");
-        bw.append("max_reorganizacion: " + info.get(8));
-        bw.flush();
-        bw.close();
-        
-        return true;
-        
+            bw.append("fecha_creacion: " + info.get(1));
+            bw.append("\r\n");
+            bw.append("usuario_creacion: " + info.get(2));
+            bw.append("\r\n");
+            bw.append("fecha_modificacion: " + today);
+            bw.append("\r\n");
+            bw.append("usuario_modificacion: " + adminUser);
+            bw.append("\r\n");
+            bw.append("#_registros: " + numReg);
+            bw.append("\r\n");
+            bw.append("registros_activos: " + activeReg);
+            bw.append("\r\n");
+            bw.append("registros_inactivos: " + inactReg);
+            bw.append("\r\n");
+            bw.append("max_reorganizacion: " + info.get(8));
+            bw.flush();
+            bw.close();
+        }
+        return flag;
     }
     
     private static boolean CrearBitacoraArchivo(String nombreMaster) 
@@ -194,7 +205,7 @@ public class Secuencial {
         file = new File(data);
         
         boolean flag = file.createNewFile();
-        
+       
         return flag;
         
     }
@@ -211,22 +222,21 @@ public class Secuencial {
             String nombreAdmin)
     throws IOException, NullPointerException{
         
-        File tmpDir = new File("C:\\MEIA\\"+ nombreMaster + ".txt");   
+        Path path = Paths.get("C:\\MEIA\\"+ nombreMaster + ".txt");
         FileWriter fw;
         BufferedWriter bw;
         FileReader fr;
         BufferedReader br;
         
-        File bitacora = new File("C:\\MEIA\\bitacora_" + nombreMaster + ".txt");
+        //File bitacora = new File("C:\\MEIA\\bitacora_" + nombreMaster + ".txt");
         
-        if (tmpDir.exists()) {
+        if (Files.exists(path)) {
             
             //Lee el descriptor
-            File descriptor = new File("C:\\MEIA\\desc_" + nombreMaster + 
-                    ".txt");
             List<String> dataDescriptor = new ArrayList<>();
             
-            fr = new FileReader(descriptor);
+            fr = new FileReader("C:\\MEIA\\desc_" + nombreMaster + 
+                    ".txt");
             br = new BufferedReader(fr);
             
             //obtiene todas las lineas del descriptor
@@ -237,18 +247,24 @@ public class Secuencial {
             
             //obtiene la posicion de max_organizacion(8) y 
             //numero de registros en la bitacora(5)
-            String[] max_reorg = dataDescriptor.get(8).trim().split(":");
-            String[] cant_reg = dataDescriptor.get(5).trim().split(":");
+            String[] max_reorg = dataDescriptor.get(8).trim().split(": ");
+            String[] cant_reg = dataDescriptor.get(5).trim().split(": ");
             
-            if(!cant_reg[1].equals(max_reorg[1]) && 
-            Integer.getInteger(cant_reg[1]) < Integer.getInteger(max_reorg[1])){
+            int a = Integer.parseInt(cant_reg[1].trim());
+            int b = Integer.parseInt(max_reorg[1].trim());
+            
+            if( a < b ){
                 
                 //se abre un buffer de datos hacia la bitacora
-                fw = new FileWriter(bitacora);
+                fw = new FileWriter("C:\\MEIA\\bitacora_" + nombreMaster + ".txt"
+                , true);
                 bw = new BufferedWriter(fw);
                 
-                //se escribe el dato hacia el buffer de bitacora
-                bw.append(dato);
+                //se escribe el dato hacia el buffer de bitacora, la suma
+                //debe dar 392 caracteres
+                int offset = 392;
+                offset = offset * Integer.parseInt(cant_reg[1].trim());
+                bw.append(dato, offset, dato.length());
                 bw.append("\r\n");
                 bw.flush();
                 bw.close();
@@ -260,7 +276,7 @@ public class Secuencial {
                         
             }else{
                 //se mete todo al archivo Maestro
-                Utilidades.BubbleSort(tmpDir, bitacora);
+                Utilidades.BubbleSort(nombreMaster);
             }
             
         }else{

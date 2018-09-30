@@ -38,7 +38,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
     String pathFoto; 
     boolean passwordResult;
-    boolean firstEntry = true;
+    static boolean firstEntry = true;
     Usuario newUser = new Usuario();
     Classes.Secuencial secuencial;
     File selectedFile; 
@@ -277,6 +277,7 @@ public class RegisterForm extends javax.swing.JFrame {
             newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
             if (tfRol.getText().equals("1") && firstEntry == true) {
+                
                 firstEntry = false;
                 
                 try{
@@ -284,13 +285,24 @@ public class RegisterForm extends javax.swing.JFrame {
                        ,"5");
                   
                   //formatear el archivo Usuario
-                  //Classes.Secuencial.Escribir(pathFoto, pathFoto, pathFoto)
+                  newUser.setRol(1);
+                  String add = newUser.setFixedSizeString();
+                  Classes.Secuencial.Escribir(add, "Usuario", 
+                          newUser.getUsuario());
                 }catch (IOException e){
                     
                     e.printStackTrace();
                 }
                 
+            }else{
+                    String add = newUser.setFixedSizeString();
+                    Classes.Secuencial.Escribir(add, "Usuario", 
+                          newUser.getUsuario());
             }
+            
+           
+                  
+                  
         } catch (Exception ex) {
 
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
