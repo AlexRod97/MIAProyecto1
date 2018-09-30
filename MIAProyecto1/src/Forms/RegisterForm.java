@@ -37,7 +37,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class RegisterForm extends javax.swing.JFrame {
 
     String pathFoto; 
-    boolean passwordResult;
+    boolean passwordSecure = false;
     static boolean firstEntry = true;
     Usuario newUser = new Usuario();
     Classes.Secuencial secuencial;
@@ -67,7 +67,6 @@ public class RegisterForm extends javax.swing.JFrame {
         lblCorreo = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         lblRegistrar = new javax.swing.JLabel();
-        tfPassword = new javax.swing.JTextField();
         tfUsuario = new javax.swing.JTextField();
         tfNombre = new javax.swing.JTextField();
         tfApellido = new javax.swing.JTextField();
@@ -82,6 +81,7 @@ public class RegisterForm extends javax.swing.JFrame {
         tfRol = new javax.swing.JTextField();
         tfEstatus = new javax.swing.JTextField();
         lblEstatus = new javax.swing.JLabel();
+        tfPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Register");
@@ -106,20 +106,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         lblRegistrar.setFont(new java.awt.Font("sansserif", 1, 60)); // NOI18N
         lblRegistrar.setText("Registrar");
-
-        tfPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPasswordActionPerformed(evt);
-            }
-        });
-        tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfPasswordKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfPasswordKeyTyped(evt);
-            }
-        });
 
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,10 +210,10 @@ public class RegisterForm extends javax.swing.JFrame {
                                         .addGap(91, 91, 91)
                                         .addComponent(lblRegistrar))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                            .addComponent(tfApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                            .addComponent(tfPassword))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblTelefono)
@@ -290,8 +276,8 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(lblApellido))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPassword))
+                            .addComponent(lblPassword)
+                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSeguridad)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,6 +325,7 @@ public class RegisterForm extends javax.swing.JFrame {
                   String add = newUser.setFixedSizeString();
                   Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
+                   
                 }catch (IOException e){
                     
                     e.printStackTrace();
@@ -371,7 +358,6 @@ public class RegisterForm extends javax.swing.JFrame {
             image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB); 
             image = ImageIO.read(selectedFile);      
            lblFoto.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
-
         }           
        }
        catch(Exception e) {
@@ -379,15 +365,6 @@ public class RegisterForm extends javax.swing.JFrame {
        }
         
     }//GEN-LAST:event_btnFotoActionPerformed
-
-    private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
-       String password = tfPassword.getText(); 
-       passwordResult = CheckPasswordResults(password);
-    }//GEN-LAST:event_tfPasswordKeyReleased
-
-    private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfPasswordActionPerformed
 
     private void tfUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUsuarioKeyTyped
         if(tfUsuario.getText().length() >= 20) {
@@ -409,13 +386,6 @@ public class RegisterForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 30 caracteres"); 
         }
     }//GEN-LAST:event_tfApellidoKeyTyped
-
-    private void tfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyTyped
-        if(tfPassword.getText().length() >= 40) {
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 40 caracteres"); 
-        }
-    }//GEN-LAST:event_tfPasswordKeyTyped
 
     private void tfRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfRolKeyTyped
         if(tfRol.getText().length() >=1 ) {
@@ -458,26 +428,30 @@ public class RegisterForm extends javax.swing.JFrame {
         
         if(result >= 0 && result<= 25) {
             
-            lblSeguridad.setText("La contraseña es insegura " + result);              
-            return false;
+            lblSeguridad.setText("La contraseña es insegura ");   
+            passwordSecure = false; 
+            return passwordSecure;
         }
         else 
          if(result >= 26 && result<= 35) {
              
-                lblSeguridad.setText("La contraseña es poco segura " + result); 
-                return false;
+                lblSeguridad.setText("La contraseña es poco segura "); 
+                passwordSecure = false; 
+                return passwordSecure;
         }
          else 
           if(result >= 36 && result<= 50) {
               
-            lblSeguridad.setText("La contraseña es segura " + result); 
-             return true;
+            lblSeguridad.setText("La contraseña es segura "); 
+            passwordSecure = true; 
+             return passwordSecure;
         }
         else 
          if(result >= 51 && result<= 100) {             
              
-             lblSeguridad.setText("La contraseña es muy segura " + result); 
-             return true;
+             lblSeguridad.setText("La contraseña es muy segura "); 
+             passwordSecure = true; 
+             return passwordSecure;
         }
          else 
              return false; 
@@ -539,7 +513,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JTextField tfEstatus;
     private javax.swing.JTextField tfNacimiento;
     private javax.swing.JTextField tfNombre;
-    private javax.swing.JTextField tfPassword;
+    private javax.swing.JPasswordField tfPassword;
     private javax.swing.JTextField tfRol;
     private javax.swing.JTextField tfTelefono;
     private javax.swing.JTextField tfUsuario;

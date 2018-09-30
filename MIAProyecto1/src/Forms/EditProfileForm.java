@@ -43,6 +43,12 @@ public class EditProfileForm extends javax.swing.JFrame {
 
         lblTelefono.setText("Telefono");
 
+        tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyTyped(evt);
+            }
+        });
+
         jLabel1.setText("Correo alterno:");
 
         lblFecha.setText("lblFecha");
@@ -108,6 +114,10 @@ public class EditProfileForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPasswordKeyTyped
 
     /**
      * @param args the command line arguments
