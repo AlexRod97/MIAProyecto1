@@ -279,7 +279,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblSeguridad">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nivel de seguridad: 0"/>
+        <Property name="text" type="java.lang.String" value="Nivel de seguridad: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRol">

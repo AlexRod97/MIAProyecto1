@@ -5,7 +5,9 @@
  */
 package Forms;
 
+import Classes.Secuencial;
 import Classes.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +16,8 @@ import Classes.Usuario;
 public class EditProfileForm extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario(); 
+    boolean passwordSecure = false;
+    boolean passwordFlag = false; 
     
     public EditProfileForm() {
         initComponents();
@@ -44,12 +48,20 @@ public class EditProfileForm extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblSeguridad = new javax.swing.JLabel();
+        btnPassword = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTelefono.setText("Telefono");
 
+        tfPassword.setText("Deshabilitado");
+        tfPassword.setToolTipText("");
+        tfPassword.setEnabled(false);
         tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfPasswordKeyTyped(evt);
             }
@@ -70,6 +82,20 @@ public class EditProfileForm extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        lblSeguridad.setText("Nivel de seguridad: ");
+
+        btnPassword.setText("Cambiar");
+        btnPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,7 +103,7 @@ public class EditProfileForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblFecha)
@@ -85,26 +111,34 @@ public class EditProfileForm extends javax.swing.JFrame {
                             .addComponent(lblPassword)
                             .addComponent(lblTelefono))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfFecha)
-                            .addComponent(tfTelefono)
-                            .addComponent(tfCorreo)
-                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSeguridad)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tfFecha)
+                                .addComponent(tfTelefono)
+                                .addComponent(tfCorreo)
+                                .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPassword)
+                        .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(116, Short.MAX_VALUE))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
-                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPassword))
+                .addGap(4, 4, 4)
+                .addComponent(lblSeguridad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -135,8 +169,11 @@ public class EditProfileForm extends javax.swing.JFrame {
        String correo = tfCorreo.getText();
        String fecha = tfFecha.getText(); 
        String telefono = tfTelefono.getText();
-       
-       if (password.equals(null)) {
+       Secuencial secuencial = new Secuencial(); 
+      
+      if(passwordSecure) {
+        try {
+           if (!passwordFlag) {
            usuario.setCorreo_Alterno(correo);
            usuario.setFecha_Nacimiento(fecha);
            usuario.setTelefono(Integer.valueOf(telefono));
@@ -145,12 +182,74 @@ public class EditProfileForm extends javax.swing.JFrame {
            usuario.setPassword(password);
            usuario.setCorreo_Alterno(correo);
            usuario.setFecha_Nacimiento(fecha);
-           usuario.setTelefono(Integer.valueOf(telefono));           
+           usuario.setTelefono(Integer.valueOf(telefono));      
+           passwordSecure = true;
        }
        String newFixedSize = usuario.setFixedSizeString();
-       //llamar metodo para sobreescribir en archivo
+       
+       secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+          
+      }catch (Exception e) {
+          
+       }
+      } 
+      else {
+           JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
+      }
+      
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
+         String password = tfPassword.getText(); 
+         passwordSecure = CheckPasswordResults(password);
+    }//GEN-LAST:event_tfPasswordKeyReleased
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       this.hide();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordActionPerformed
+      tfPassword.enable(true);
+      passwordFlag = true;
+      tfPassword.setText("");
+      JOptionPane.showMessageDialog(null, "Campo habilitado para edición", "Notificación",WIDTH);
+    }//GEN-LAST:event_btnPasswordActionPerformed
+
+    public boolean CheckPasswordResults(String password) {     
+        
+        int result = usuario.checkPassword(password);
+        
+        if(result >= 0 && result<= 25) {
+            
+            lblSeguridad.setText("La contraseña es insegura ");   
+            passwordSecure = false; 
+            return passwordSecure;
+        }
+        else 
+         if(result >= 26 && result<= 35) {
+             
+                lblSeguridad.setText("La contraseña es poco segura "); 
+                passwordSecure = false; 
+                return passwordSecure;
+        }
+         else 
+          if(result >= 36 && result<= 50) {
+              
+            lblSeguridad.setText("La contraseña es segura "); 
+            passwordSecure = true; 
+             return passwordSecure;
+        }
+        else 
+         if(result >= 51 && result<= 100) {             
+             
+             lblSeguridad.setText("La contraseña es muy segura "); 
+             passwordSecure = true; 
+             return passwordSecure;
+        }
+         else 
+             return false; 
+            
+    }    
     /**
      * @param args the command line arguments
      */
@@ -189,9 +288,11 @@ public class EditProfileForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblSeguridad;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JTextField tfCorreo;
     private javax.swing.JTextField tfFecha;

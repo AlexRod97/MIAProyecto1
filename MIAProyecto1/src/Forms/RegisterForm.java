@@ -167,7 +167,7 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
-        lblSeguridad.setText("Nivel de seguridad: 0");
+        lblSeguridad.setText("Nivel de seguridad: ");
 
         lblRol.setText("Rol:");
 
