@@ -6,6 +6,7 @@
 package Forms;
 
 import Classes.Usuario;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.io.File;
@@ -24,6 +25,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -44,6 +46,7 @@ public class RegisterForm extends javax.swing.JFrame {
     
     public RegisterForm() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -303,7 +306,9 @@ public class RegisterForm extends javax.swing.JFrame {
            if (result == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();    
             image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB); 
-            image = ImageIO.read(selectedFile);             
+            image = ImageIO.read(selectedFile);      
+           lblFoto.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
+
         }           
        }
        catch(Exception e) {
