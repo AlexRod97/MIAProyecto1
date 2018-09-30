@@ -31,22 +31,23 @@ public class Utilidades {
         //tomar un registro de la bitacora, ordenar e introducir
         FileReader bitReader = new FileReader(bitacora);
         BufferedReader bitBuff = new BufferedReader(bitReader);
+        boolean flag = false;
  
-        while(!bitBuff.equals(null)){
+        while(flag != true){
             
             FileReader MasterReader = new FileReader(Master);
             BufferedReader MasterBuff = new BufferedReader(MasterReader);
             
             String x = bitBuff.readLine();
             String[] datosBuff = x.trim().split("\\|");
-            boolean flag = false;
+            
             
             while(flag == false){
                 
                 int offset = 0;
                 String y = MasterBuff.readLine();
                 
-                if (!y.equals(null)) {
+                if (!y.equals("")) {
                     
                  String[] datosMaster = y.trim().split("\\|");
                  
@@ -69,6 +70,7 @@ public class Utilidades {
                          //escribe al archivo y accede a posicion mediante
                          //un offset
                          bw.write(x, offset, x.length());
+                         bw.flush();
                          bw.close();
                          flag = true;
                         break;

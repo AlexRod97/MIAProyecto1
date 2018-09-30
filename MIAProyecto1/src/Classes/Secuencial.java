@@ -34,14 +34,13 @@ public class Secuencial {
      * @param nombre
      * @throws IOException 
      */
-    public Secuencial(String nombre, int rol, String usuarioMaster,
+    public Secuencial(String nombre, String usuarioMaster,
             String reorg) throws IOException{
      
-        if (rol == 1) {
         CrearMaster(nombre);
         CrearArchivoDesc(nombre, usuarioMaster, reorg);
         CrearBitacoraArchivo(nombre);    
-        }
+        
     }
     
     /**
@@ -56,6 +55,8 @@ public class Secuencial {
        
         data = "C:\\MEIA\\" + nombre.toString() + ".txt";
         
+        file = new File(data);
+        
         boolean flag = file.createNewFile();
         
         return flag;
@@ -69,13 +70,15 @@ public class Secuencial {
         
         data = "C:\\MEIA\\desc_" + nombreMaster.toString() + ".txt";
         
+        file = new File(data);
+        
         boolean flag = file.createNewFile();
         
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
         
-        bw.append("nombre_simbolico: ");
-        
+        bw.append("nombre_simbolico: " + nombreMaster);
+        bw.append("\r\n");
         //formateamos la fecha:
         Date date = Calendar.getInstance().getTime();
         
@@ -103,7 +106,8 @@ public class Secuencial {
             maxReorg = "5";
         }
         bw.append("max_reorganizacion: " + maxReorg);
-        
+        bw.flush();
+        bw.close();
         return flag;
     }
     
@@ -148,6 +152,7 @@ public class Secuencial {
         
         
         bw.append("nombre_simbolico: " + nombreArchivoMaster);
+        bw.append("\r\n");
        
         //formateamos la fecha:
         Date date = Calendar.getInstance().getTime();
@@ -171,6 +176,8 @@ public class Secuencial {
         bw.append("registros_inactivos: " + inactReg);
         bw.append("\r\n");
         bw.append("max_reorganizacion: " + info.get(8));
+        bw.flush();
+        bw.close();
         
         return true;
         
@@ -183,6 +190,8 @@ public class Secuencial {
         String data = "";
         
         data = "C:\\MEIA\\bitacora_" + nombreMaster + ".txt";
+        
+        file = new File(data);
         
         boolean flag = file.createNewFile();
         
@@ -241,6 +250,7 @@ public class Secuencial {
                 //se escribe el dato hacia el buffer de bitacora
                 bw.append(dato);
                 bw.append("\r\n");
+                bw.flush();
                 bw.close();
                 
                

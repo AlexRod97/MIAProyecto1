@@ -37,7 +37,7 @@ public class Usuario{
     public Usuario() {    
     }
 
-    public Usuario(String Usuario, String Nombre, String Apellido, String Password, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia) {
+     public Usuario(String Usuario, String Nombre, String Apellido, String Password, int Rol, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus) {
         this.Usuario = Usuario;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
