@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class Usuario{
     private String Apellido; 
     private String Password; 
     private int Rol; 
-    private Date Fecha_Nacimiento; 
+    private String Fecha_Nacimiento; 
     private String Correo_Alterno; 
     private int Telefono; 
     private String Path_Fotografia; 
@@ -36,17 +37,15 @@ public class Usuario{
     public Usuario() {    
     }
 
-    public Usuario(String Usuario, String Nombre, String Apellido, String Password, int Rol, Date Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus) {
+    public Usuario(String Usuario, String Nombre, String Apellido, String Password, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia) {
         this.Usuario = Usuario;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.Password = Encriptar(Password);
-        this.Rol = Rol;
+        this.Password = Encriptar(Password);    
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
-        this.Path_Fotografia = Path_Fotografia;
-        this.Estatus = Estatus;
+        this.Path_Fotografia = Path_Fotografia;      
     }
    
     public String getUsuario() {
@@ -95,11 +94,11 @@ public class Usuario{
         this.Rol = Rol;
     }
 
-    public Date getFecha_Nacimiento() {
+    public String getFecha_Nacimiento() {
         return Fecha_Nacimiento;
     }
 
-    public void setFecha_Nacimiento(Date Fecha_Nacimiento) {
+    public void setFecha_Nacimiento(String Fecha_Nacimiento) {
         this.Fecha_Nacimiento = Fecha_Nacimiento;
     }
 
@@ -156,6 +155,51 @@ public class Usuario{
            throw new RuntimeException(e);
         }         
     }
+    
+    private String ToFixedSizeString(String word, int count) {
+    String result = ""; 	
+      for(int i = 0; i < count; i++) {
+	result += "&";
+      }
+        return result+word;        
+    }
+    
+    public String setFixedSizeString() {
+        
+    StringBuilder line = new StringBuilder(); 
+
+    line.append(ToFixedSizeString(Usuario, 20));
+    line.append("|");
+
+    line.append(ToFixedSizeString(Nombre, 30));
+    line.append("|");
+
+    line.append(ToFixedSizeString(Apellido, 40));
+    line.append("|");
+
+    line.append(ToFixedSizeString(Password,40));
+    line.append("|");
+
+    line.append(Rol);
+    line.append("|");
+
+    line.append(Fecha_Nacimiento);
+    line.append("|");
+
+    line.append(ToFixedSizeString(Correo_Alterno, 40));
+    line.append("|");
+
+    line.append(Telefono);
+    line.append("|");
+
+    line.append(ToFixedSizeString(Path_Fotografia, 200));
+    line.append("|");
+
+    line.append(Estatus);
+
+    return line.toString();
+    }
+    
     
    public static class Puntuaciones {
     

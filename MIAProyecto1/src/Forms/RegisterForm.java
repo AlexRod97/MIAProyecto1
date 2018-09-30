@@ -6,15 +6,22 @@
 package Forms;
 
 import Classes.Usuario;
+import java.awt.image.BufferedImage;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.io.File;
+import java.io.FileFilter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -43,10 +50,8 @@ public class RegisterForm extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
-        lblEstatus = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        lblRol = new javax.swing.JLabel();
         lblFechaNacimiento = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
@@ -55,10 +60,8 @@ public class RegisterForm extends javax.swing.JFrame {
         tfUsuario = new javax.swing.JTextField();
         tfNombre = new javax.swing.JTextField();
         tfApellido = new javax.swing.JTextField();
-        tfRol = new javax.swing.JTextField();
         tfNacimiento = new javax.swing.JTextField();
         tfCorreo = new javax.swing.JTextField();
-        tfEstatus = new javax.swing.JTextField();
         tfTelefono = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
@@ -74,14 +77,10 @@ public class RegisterForm extends javax.swing.JFrame {
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fotoP.png"))); // NOI18N
         lblFoto.setText("jLabel1");
 
-        lblEstatus.setText("Estatus:");
-
         lblApellido.setText("Apellido:");
 
         lblPassword.setText("Password:");
         lblPassword.setToolTipText("");
-
-        lblRol.setText("Rol:");
 
         lblFechaNacimiento.setText("Fecha de nacimiento:");
 
@@ -134,7 +133,6 @@ public class RegisterForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRol)
                     .addComponent(lblPassword)
                     .addComponent(lblApellido)
                     .addComponent(lblUsuario)
@@ -152,12 +150,10 @@ public class RegisterForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfRol, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblTelefono)
-                                    .addComponent(lblEstatus)
                                     .addComponent(lblCorreo)
                                     .addComponent(lblFechaNacimiento)))
                             .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,7 +168,6 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(tfNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,13 +201,7 @@ public class RegisterForm extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefono))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEstatus)
-                            .addComponent(tfRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRol)))
+                            .addComponent(lblTelefono)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
@@ -227,7 +216,7 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(lblPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSeguridad)))
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,20 +231,26 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tfUsuarioActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-        Date date;
-        try {
-            date = format.parse(tfNacimiento.getText());            
-            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), date, tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
-            date.getDate();
-        } catch (ParseException ex) {
+     try {          
+           newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto); 
+           newUser.setFixedSizeString();
+     } catch (Exception ex) {
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
-        // TODO add your handling code here:
+       JFileChooser fileChooser = new JFileChooser();
+       FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+       fileChooser.setFileFilter(imageFilter);
+       int result = fileChooser.showOpenDialog(this);
+       
+       if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+     //       BufferedImage image = new BufferedImage(selectedFile);
+            tfNacimiento.setText(selectedFile.getAbsolutePath());
+            //ImageIO.
+        }
         
     }//GEN-LAST:event_btnFotoActionPerformed
 
@@ -340,23 +335,19 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblEstatus;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRegistrar;
-    private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblSeguridad;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField tfApellido;
     private javax.swing.JTextField tfCorreo;
-    private javax.swing.JTextField tfEstatus;
     private javax.swing.JTextField tfNacimiento;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPassword;
-    private javax.swing.JTextField tfRol;
     private javax.swing.JTextField tfTelefono;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables

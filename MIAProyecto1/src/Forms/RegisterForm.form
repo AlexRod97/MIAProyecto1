@@ -26,7 +26,6 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblRol" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                   <Component id="lblApellido" min="-2" max="-2" attributes="0"/>
                   <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
@@ -47,12 +46,10 @@
                                   <Component id="tfNombre" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                                   <Component id="tfApellido" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                                   <Component id="tfPassword" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
-                                  <Component id="tfRol" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="lblTelefono" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEstatus" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblFechaNacimiento" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -72,7 +69,6 @@
                           <Component id="tfNacimiento" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                           <Component id="tfCorreo" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                           <Component id="tfTelefono" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
-                          <Component id="tfEstatus" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="lblFoto" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -120,13 +116,6 @@
                           <Component id="tfTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -147,7 +136,7 @@
                       <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRegistrar" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="btnCancelar" min="-2" pref="48" max="-2" attributes="0"/>
@@ -176,11 +165,6 @@
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblEstatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Estatus:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblApellido">
       <Properties>
         <Property name="text" type="java.lang.String" value="Apellido:"/>
@@ -190,11 +174,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Password:"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRol">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rol:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFechaNacimiento">
@@ -235,13 +214,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tfApellido">
     </Component>
-    <Component class="javax.swing.JTextField" name="tfRol">
-    </Component>
     <Component class="javax.swing.JTextField" name="tfNacimiento">
     </Component>
     <Component class="javax.swing.JTextField" name="tfCorreo">
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfEstatus">
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefono">
     </Component>
