@@ -20,7 +20,8 @@ public class LoginForm extends javax.swing.JFrame {
     
     
     Classes.Secuencial ArchivoSecuencial;
-    
+    public static Usuario newUser = new Usuario(); 
+     
     public LoginForm() {
         initComponents();
         
@@ -134,23 +135,22 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
-        Secuencial secuencial = new Secuencial();
-        Usuario newUser = new Usuario(); 
+        Secuencial secuencial = new Secuencial();       
         String user = tfUsuario.getText(); 
         String password = newUser.Encriptar(tfPassword.getText());
         
         try {            
-        String line = secuencial.Buscar(tfUsuario.getText(), "Usuario");
-        newUser = newUser.getFixedSizeString(line);
-        
+        newUser = secuencial.ObtenerUsuario(user, "Usuario");
+               
             if(password.equals(newUser.getPassword())) {                
              switch (newUser.getRol()) {
                 case 0:
-                    AdminForm admin = new AdminForm();
+                    AdminForm admin = new AdminForm();                
                     admin.show();
                     break;
                 case 1:
                     UserForm userForm = new UserForm();
+                    //userForm.usuario = newUser;
                     userForm.show();
                     break;
             
@@ -162,9 +162,6 @@ public class LoginForm extends javax.swing.JFrame {
             else {
             JOptionPane.showMessageDialog(null, "La contraseña ingresada no es correcta", "Error",WIDTH);
             }
-        
-        
-            
         }
         catch(Exception e) {
             

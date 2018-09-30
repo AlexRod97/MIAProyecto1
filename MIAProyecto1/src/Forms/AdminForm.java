@@ -5,18 +5,21 @@
  */
 package Forms;
 
+import Classes.Usuario;
+
 /**
  *
  * @author rodri
  */
 public class AdminForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminForm
-     */
+    public static Usuario usuario = new Usuario(); 
+   
     public AdminForm() {
-        initComponents();
+        initComponents();      
         this.setLocationRelativeTo(null);
+        LoginForm login = new LoginForm(); 
+        usuario = login.newUser; 
     }
 
     /**
@@ -90,7 +93,7 @@ public class AdminForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        EditProfileForm edit = new EditProfileForm(); 
+        EditProfileForm edit = new EditProfileForm();         
         edit.show();
     }//GEN-LAST:event_btnEditarActionPerformed
 

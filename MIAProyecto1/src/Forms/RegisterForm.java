@@ -322,7 +322,7 @@ public class RegisterForm extends javax.swing.JFrame {
                  selectedFile = new File(pathFoto);
                 ImageIO.write(image,"jpg",selectedFile);                 
             }        
-            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
+            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(),newUser.Encriptar(tfPassword.getText()), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
             Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
                     ".txt");

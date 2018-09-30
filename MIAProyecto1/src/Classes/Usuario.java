@@ -41,7 +41,7 @@ public class Usuario{
         this.Usuario = Usuario;
         this.Nombre = Nombre;
         this.Apellido = Apellido;
-        this.Password = Encriptar(Password);    
+        this.Password = Password;    
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
@@ -111,8 +111,8 @@ public class Usuario{
         this.Correo_Alterno = Correo_Alterno;
     }
 
-    public int getTelefono() {
-        return Telefono;
+    public String getTelefono() {
+        return String.valueOf(Telefono);
     }
 
     public void setTelefono(int Telefono) {

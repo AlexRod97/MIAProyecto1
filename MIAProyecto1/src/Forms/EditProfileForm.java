@@ -5,17 +5,23 @@
  */
 package Forms;
 
+import Classes.Usuario;
+
 /**
  *
  * @author rodri
  */
 public class EditProfileForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditProfileForm
-     */
+    public static Usuario usuario = new Usuario(); 
+    
     public EditProfileForm() {
         initComponents();
+        AdminForm admin = new AdminForm(); 
+        usuario = admin.usuario; 
+        tfCorreo.setText(usuario.getCorreo_Alterno());
+        tfFecha.setText(usuario.getFecha_Nacimiento());
+        tfTelefono.setText(usuario.getTelefono());
         this.setLocationRelativeTo(null);
     }
 
@@ -57,6 +63,11 @@ public class EditProfileForm extends javax.swing.JFrame {
 
         btnGuardar.setText("Guardar");
         btnGuardar.setToolTipText("");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
 
@@ -118,6 +129,27 @@ public class EditProfileForm extends javax.swing.JFrame {
     private void tfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordKeyTyped
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       String password = usuario.Encriptar(tfPassword.getText()); 
+       String correo = tfCorreo.getText();
+       String fecha = tfFecha.getText(); 
+       String telefono = tfTelefono.getText();
+       
+       if (password.equals(null)) {
+           usuario.setCorreo_Alterno(correo);
+           usuario.setFecha_Nacimiento(fecha);
+           usuario.setTelefono(Integer.valueOf(telefono));
+       }
+       else {
+           usuario.setPassword(password);
+           usuario.setCorreo_Alterno(correo);
+           usuario.setFecha_Nacimiento(fecha);
+           usuario.setTelefono(Integer.valueOf(telefono));           
+       }
+       String newFixedSize = usuario.setFixedSizeString();
+       //llamar metodo para sobreescribir en archivo
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
