@@ -194,6 +194,77 @@ public class Secuencial {
         return flag;
     }
     
+     private static boolean EscribirArchivoDescReset(String adminUser, String
+            nombreArchivoMaster)throws IOException{
+        
+        File file = new File("C:\\MEIA\\desc_" + nombreArchivoMaster + ".txt");
+        
+        
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        
+        boolean flag = file.exists();
+        
+        if (flag) {
+            List<String> datos = br.lines().collect(Collectors.toList());
+            List<String> info = new ArrayList<>();
+        
+            for (int i = 0; i < datos.size(); i++){
+               
+                String[] temp = datos.get(i).trim().split(": ");
+                if (temp[1] == "" || temp[1] == null) {
+                    info.add("");
+                }
+                info.add(temp[1]);
+            }
+        
+            br.close();
+        
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+        
+        
+            int numReg = Integer.parseInt(info.get(5));
+            numReg = 0;
+        
+            int activeReg = Integer.parseInt(info.get(6));
+            activeReg = 0;
+        
+            int inactReg = Integer.parseInt(info.get(7));
+            inactReg = numReg - activeReg; 
+        
+        
+            bw.append("nombre_simbolico: " + nombreArchivoMaster);
+            bw.append("\r\n");
+       
+            //formateamos la fecha:
+            Date date = Calendar.getInstance().getTime();
+        
+            DateFormat formatter = new SimpleDateFormat(
+                   "EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+            String today = formatter.format(date);
+        
+            bw.append("fecha_creacion: " + info.get(1));
+            bw.append("\r\n");
+            bw.append("usuario_creacion: " + info.get(2));
+            bw.append("\r\n");
+            bw.append("fecha_modificacion: " + today);
+            bw.append("\r\n");
+            bw.append("usuario_modificacion: " + adminUser);
+            bw.append("\r\n");
+            bw.append("#_registros: " + numReg);
+            bw.append("\r\n");
+            bw.append("registros_activos: " + activeReg);
+            bw.append("\r\n");
+            bw.append("registros_inactivos: " + inactReg);
+            bw.append("\r\n");
+            bw.append("max_reorganizacion: " + info.get(8));
+            bw.flush();
+            bw.close();
+        }
+        return flag;
+    }
+    
     private static boolean CrearBitacoraArchivo(String nombreMaster) 
             throws IOException{
         
@@ -276,6 +347,12 @@ public class Secuencial {
             }else{
                 //se mete todo al archivo Maestro
                 Utilidades.VolcarMaster(nombreMaster);
+                
+                //se debe resetear el archivo descriptor y volver a llamar
+                //al metodo escribir para que ingrese los datos a la bitacora
+                EscribirArchivoDescReset(nombreAdmin, nombreMaster);
+                Escribir(dato, nombreMaster, nombreAdmin);
+                
             }
             
         }else{
@@ -322,6 +399,64 @@ public class Secuencial {
         }
         br.close();
         return data;
+    }
+    
+    /**
+     * 
+     * @param id
+     * @param master
+     * @return
+     * @throws IOException 
+     */
+    public static Usuario ObtenerUsuario(String id, String master)
+            throws IOException{
+        
+        FileReader fr = new FileReader("C:\\MEIA\\" + master + ".txt");
+        BufferedReader br = new BufferedReader(fr);
+        
+        Usuario temp = null;
+        
+        List<String> datosMaster = br.lines().collect(Collectors.toList());
+        
+        br.close();
+        
+        for (int i = 0; i < datosMaster.size(); i++) {
+            String[] splittedUser = datosMaster.get(i)
+                    .replace("&", "").split("\\|");
+            //String Usuario, String Nombre, String Apellido, String Password, int Rol, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus
+            
+            temp = new Usuario(splittedUser[0],splittedUser[1],splittedUser[2],
+            splittedUser[3],Integer.parseInt(splittedUser[4]),splittedUser[5],
+            splittedUser[6],Integer.parseInt(splittedUser[7]),splittedUser[8],
+            Integer.parseInt(splittedUser[9]));
+            
+            if (temp.getUsuario().equals(id)) {
+                return temp;
+            }  
+        }
+        //no encontro, po lo cual se busca en el archivo bitacora
+        fr = new FileReader("C:\\MEIA\\bitacora_" + master + ".txt");
+        br = new BufferedReader(fr);
+        
+        List<String> datosBit = br.lines().collect(Collectors.toList());
+        
+        for (int i = 0; i < datosBit.size(); i++) {
+            
+            String[] splittedUser = datosBit.get(i)
+                    .replace("&", "").split("\\|");
+            //String Usuario, String Nombre, String Apellido, String Password, int Rol, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia, int Estatus
+            
+            temp = new Usuario(splittedUser[0],splittedUser[1],splittedUser[2],
+            splittedUser[3],Integer.parseInt(splittedUser[4]),splittedUser[5],
+            splittedUser[6],Integer.parseInt(splittedUser[7]),splittedUser[8],
+            Integer.parseInt(splittedUser[9]));
+            
+            if (temp.getUsuario().equals(id)) {
+                return temp;
+            }  
+        }
+        
+        return null;
     }
 }
     

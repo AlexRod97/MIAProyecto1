@@ -16,6 +16,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -312,8 +315,9 @@ public class RegisterForm extends javax.swing.JFrame {
             ImageIO.write(image,"jpg",selectedFile);         
             newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
-            if (tfRol.getText().equals("1") && firstEntry == true) {
-                
+            Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
+                    ".txt");
+            if (!Files.exists(path)) {
                 firstEntry = false;
                 
                 try{
@@ -330,12 +334,12 @@ public class RegisterForm extends javax.swing.JFrame {
                     
                     e.printStackTrace();
                 }
-                
             }else{
                     String add = newUser.setFixedSizeString();
                     Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
             }
+            
             
            
                   

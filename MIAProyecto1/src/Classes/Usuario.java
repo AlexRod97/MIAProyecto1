@@ -200,7 +200,6 @@ public class Usuario{
     line.append(Estatus);
     line.append("\r\n");
 
-    int cant = line.length();
     
     return line.toString();
     }

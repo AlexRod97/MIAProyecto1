@@ -55,23 +55,21 @@ public class Utilidades {
             //ordena los datos
             datosMaster.addAll(datosBitacora);
             
-            List<String> sorted = (List<String>) datosMaster.stream()
-                    .sorted(Comparator.comparing(e -> e.substring(0,20)));
+            Collections.sort(datosMaster);
             
             FileWriter fw = new FileWriter(tmpDir);
             BufferedWriter bw = new BufferedWriter(fw);
                               
-            for (int i = 0; i < sorted.size(); i++) {
-                bw.append(sorted.get(i));
+            for (int i = 0; i < datosMaster.size(); i++) {
+                bw.append(datosMaster.get(i) + "\r\n");
             }
             
             bw.close();
             
             File master = new File(pathMaster);
             
-            tmpDir.renameTo(master);
-            
-            
+            master = tmpDir;
+            tmpDir.delete();
             
         }
         
