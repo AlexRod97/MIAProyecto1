@@ -42,7 +42,11 @@ public class Secuencial {
      
         CrearMaster(nombre);
         CrearArchivoDesc(nombre, usuarioMaster, reorg);
-        CrearBitacoraArchivo(nombre);    
+        CrearBitacoraArchivo(nombre);   
+        
+    }
+    
+    public Secuencial () {
         
     }
     
@@ -300,7 +304,9 @@ public class Secuencial {
         while(data != null){
             
          String[] temp = data.trim().split("\\|");
-         if(temp[0].trim().equals(idUsuario))
+         Usuario tempUser = new Usuario(); 
+         String comparable = tempUser.fromFixedSizeString(temp[0]);
+         if(comparable.equals(idUsuario))
             break;
          data = br.readLine();
         }
@@ -315,7 +321,9 @@ public class Secuencial {
         while(data != null){
             
          String[] temp = data.trim().split("\\|");
-         if(temp[0].trim().equals(idUsuario))
+         Usuario tempUser = new Usuario(); 
+         String comparable = tempUser.fromFixedSizeString(temp[0]);
+         if(comparable.equals(idUsuario))
             break;
          data = br.readLine();   
         }

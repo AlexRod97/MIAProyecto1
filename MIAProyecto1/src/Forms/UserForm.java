@@ -18,6 +18,7 @@ public class UserForm extends javax.swing.JFrame {
      */
     public UserForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
