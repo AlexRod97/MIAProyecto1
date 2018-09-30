@@ -294,5 +294,11 @@ public class Usuario{
        return puntuacionFinal; 
     }
    
-  }        
+  }
+   
+   public static int TamanioFijo(){
+       
+       return 489;
+       
+   }
 }
