@@ -39,7 +39,8 @@ public class RegisterForm extends javax.swing.JFrame {
     boolean firstEntry = true;
     Usuario newUser = new Usuario();
     Classes.Secuencial secuencial;
-   
+    File selectedFile; 
+    BufferedImage image; 
     
     public RegisterForm() {
         initComponents();
@@ -265,7 +266,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        try {            
+        try {     
+            pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
+            selectedFile = new File(pathFoto);
+            ImageIO.write(image,"jpg",selectedFile);         
             newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(), tfPassword.getText(), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
             if (tfRol.getText().equals("1") && firstEntry == true) {
@@ -293,14 +297,18 @@ public class RegisterForm extends javax.swing.JFrame {
        JFileChooser fileChooser = new JFileChooser();
        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
        fileChooser.setFileFilter(imageFilter);
-       int result = fileChooser.showOpenDialog(this);
+       int result = fileChooser.showOpenDialog(this);       
        
-       if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-     //       BufferedImage image = new BufferedImage(selectedFile);
-            tfNacimiento.setText(selectedFile.getAbsolutePath());
-            //ImageIO.
-        }
+       try {           
+           if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();    
+            image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB); 
+            image = ImageIO.read(selectedFile);             
+        }           
+       }
+       catch(Exception e) {
+           
+       }
         
     }//GEN-LAST:event_btnFotoActionPerformed
 
