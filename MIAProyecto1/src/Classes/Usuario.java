@@ -198,6 +198,7 @@ public class Usuario{
     line.append("|");
 
     line.append(Estatus);
+    line.append("\r\n");
 
     int cant = line.length();
     
