@@ -10,10 +10,13 @@ import Classes.Usuario;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -27,7 +30,7 @@ public class AdminForm extends javax.swing.JFrame {
     String pathBU = "";
     Secuencial secuencial;
     
-    public AdminForm() {
+    public AdminForm() throws IOException {
         initComponents();      
         this.setLocationRelativeTo(null);
         LoginForm login = new LoginForm(); 
@@ -216,7 +219,11 @@ public class AdminForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminForm().setVisible(true);
+                try {
+                    new AdminForm().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

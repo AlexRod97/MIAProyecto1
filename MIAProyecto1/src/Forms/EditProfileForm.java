@@ -9,6 +9,9 @@ import Classes.Secuencial;
 import Classes.Usuario;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -28,7 +31,7 @@ public class EditProfileForm extends javax.swing.JFrame {
     BufferedImage image;
     String pathFoto; 
     
-    public EditProfileForm() {
+    public EditProfileForm() throws IOException {
         initComponents();
         AdminForm admin = new AdminForm(); 
         usuario = admin.usuario; 
@@ -108,8 +111,6 @@ public class EditProfileForm extends javax.swing.JFrame {
                 btnPasswordActionPerformed(evt);
             }
         });
-
-        lblFoto.setText("jLabel2");
 
         btnFoto.setText("Cargar");
         btnFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +340,11 @@ public class EditProfileForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditProfileForm().setVisible(true);
+                try {
+                    new EditProfileForm().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(EditProfileForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
