@@ -331,12 +331,15 @@ public class RegisterForm extends javax.swing.JFrame {
         
         if(!temp.equals(tfUsuario.getText())){
          if(passwordSecure) {
-            try {                 
+             
+            try {  
+                
             if(image != null) {
                 pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
                  selectedFile = new File(pathFoto);
                 ImageIO.write(image,"jpg",selectedFile);                 
             }        
+            
             newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(),newUser.Encriptar(tfPassword.getText()), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
             
             Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
@@ -349,6 +352,7 @@ public class RegisterForm extends javax.swing.JFrame {
                   
                   //formatear el archivo Usuario
                   newUser.setRol(1);
+                  newUser.setEstatus(1);
                   String add = newUser.setFixedSizeString();
                   Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
@@ -358,6 +362,8 @@ public class RegisterForm extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
             }else{
+                    newUser.setRol(0);
+                    newUser.setEstatus(1);
                     String add = newUser.setFixedSizeString();
                     Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());

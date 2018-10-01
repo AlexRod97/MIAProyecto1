@@ -89,7 +89,7 @@ public class Utilidades {
     public static void renameFile(File toBeRenamed, String new_name)
     throws IOException {
     //need to be in the same path
-    File fileWithNewName = new File(toBeRenamed.getParent(), new_name);
+    File fileWithNewName = new File(toBeRenamed.getParent(), new_name + ".txt");
     if (fileWithNewName.exists()) {
         throw new IOException("file exists");
     }
