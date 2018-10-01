@@ -47,8 +47,20 @@ public class Usuario{
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
         this.Path_Fotografia = Path_Fotografia;    
-        Estatus = 1;
+        this.Estatus = Estatus;
     }
+     
+     public Usuario(String Usuario, String Nombre, String Apellido, String Password, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia) {
+        this.Usuario = Usuario;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Password = Password;    
+        this.Fecha_Nacimiento = Fecha_Nacimiento;      
+        this.Correo_Alterno = Correo_Alterno;
+        this.Telefono = Telefono;
+        this.Path_Fotografia = Path_Fotografia;    
+        this.Estatus = 1;
+    }     
    
     public String getUsuario() {
         return Usuario;
