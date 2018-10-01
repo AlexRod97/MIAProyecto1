@@ -55,6 +55,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tfPassword.setText("Paalrosu13@");
+
+        tfUsuario.setText("Alexrod97");
+
         lblUsuario.setText("Usuario:");
 
         lblPassword.setText("Password:");

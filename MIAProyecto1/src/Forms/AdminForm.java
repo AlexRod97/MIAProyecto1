@@ -7,6 +7,9 @@ package Forms;
 
 import Classes.Secuencial;
 import Classes.Usuario;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,13 +24,14 @@ public class AdminForm extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario(); 
     String pathBU = "";
-    Secuencial secuencial = new Secuencial(); 
+    Secuencial secuencial;
     
     public AdminForm() {
         initComponents();      
         this.setLocationRelativeTo(null);
         LoginForm login = new LoginForm(); 
         usuario = login.newUser; 
+         secuencial = new Secuencial(usuario.getUsuario());
     }
 
     /**
@@ -139,11 +143,22 @@ public class AdminForm extends javax.swing.JFrame {
     private void btnBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackupActionPerformed
         JFileChooser chooser = new JFileChooser();       
         int retrival = chooser.showSaveDialog(null);
+        String rutaMaster = "C:\\MEIA\\Usuario.txt"; 
+        String rutaBitacora = "C:\\MEIA\\bitacora_txt"; 
+        String rutaDesc = "C:\\MEIA\\desc_Usuario.txt"; 
         
         if (retrival == JFileChooser.APPROVE_OPTION) {            
             try {
                 pathBU = chooser.getCurrentDirectory().getAbsolutePath(); 
-                pathBU = pathBU + "MEIA_Backup"; 
+                pathBU = pathBU + "\\MEIA_Backup.txt";
+                File file = new File(pathBU);
+                FileWriter Escribir = new FileWriter(file,true);
+                BufferedWriter bw = new BufferedWriter(Escribir);
+                bw.write(rutaMaster + System.getProperty( "line.separator" ));
+                bw.write(rutaBitacora + System.getProperty( "line.separator" ));
+                bw.write(rutaDesc);
+                bw.close();
+                Escribir.close(); 
                 secuencial.CrearArchivoBU(setFixedSize(), usuario.getUsuario()); 
         
             } catch (Exception ex) {

@@ -43,10 +43,15 @@ public class Secuencial {
         CrearMaster(nombre);
         CrearArchivoDesc(nombre, usuarioMaster, reorg);
         CrearBitacoraArchivo(nombre);   
+      //  CrearArchivoDescBU(nombre); 
         
     }
     
-    public Secuencial () {
+    public Secuencial (String nombre) {
+      CrearArchivoDescBU(nombre);   
+    }
+    
+    public Secuencial() {
         
     }
     
@@ -301,18 +306,49 @@ public class Secuencial {
           BufferedWriter bw = new BufferedWriter(Escribir);
           bw.write(line + System.getProperty( "line.separator" ));
           bw.close();
-          Escribir.close();   
-          CrearArchivoDescBU(user);
-          
+          Escribir.close();                       
+          EscribirArchivoDescBU(user);
         } catch(Exception ex) {            
           }
     }
     
-    private static void CrearArchivoDescBU(String user) throws Exception {
-      File file = new File("C:\\MEIA\\desc_bitacora_Backup.txt");
-      FileReader fr = new FileReader(file);
-      BufferedReader br = new BufferedReader(fr);    
+    private static void CrearArchivoDescBU(String user) {
+     try {
+      File file = new File("C:\\MEIA\\desc_bitacora_Backup.txt"); 
+      FileWriter Escribir = new FileWriter(file,true);
+      BufferedWriter bw = new BufferedWriter(Escribir);
+          
+      bw.append("nombre_simbolico: bitacora_Backup");
+      bw.append("\r\n");
+       
+      //formateamos la fecha:
+      Date date = Calendar.getInstance().getTime();
+        
+      DateFormat formatter = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+      String today = formatter.format(date);
+       
+      bw.append("fecha_creacion: " + today);
+      bw.append("\r\n");
+      bw.append("usuario_creacion: " + user);
+      bw.append("\r\n");
+      bw.append("fecha_modificacion: " + 0);
+      bw.append("\r\n");
+      bw.append("usuario_modificacion: " + 0);
+      bw.append("\r\n");
+      bw.append("#_registros: " + 0);          
+      bw.close();
+      Escribir.close();            
+        
+      } catch(Exception ex) {            
+       }      
+    }    
+    
+    private static void EscribirArchivoDescBU(String user) throws Exception {
+      File file = new File("C:\\MEIA\\desc_bitacora_Backup.txt"); 
       
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr); 
+        
       List<String> datos = br.lines().collect(Collectors.toList());
       List<String> info = new ArrayList<>();
       for (int i = 0; i < datos.size(); i++){
@@ -324,10 +360,10 @@ public class Secuencial {
                 info.add(temp[1]);
             }
        
-      br.close();            
-        
-      FileWriter fw = new FileWriter(file);
-      BufferedWriter bw = new BufferedWriter(fw);
+      br.close();      
+      
+      FileWriter Escribir = new FileWriter(file,false);
+      BufferedWriter bw = new BufferedWriter(Escribir);
       
       bw.append("nombre_simbolico: bitacora_Backup");
       bw.append("\r\n");
@@ -346,11 +382,10 @@ public class Secuencial {
       bw.append("\r\n");
       bw.append("usuario_modificacion: " + user);
       bw.append("\r\n");
-      bw.append("#_registros: " + info.size());
+      bw.append("#_registros: " + info.size()/3);
       bw.flush();
       bw.close();      
-            
-      
+      Escribir.close();          
     }
     
     
