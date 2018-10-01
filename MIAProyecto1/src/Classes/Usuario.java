@@ -43,6 +43,7 @@ public class Usuario{
         this.Apellido = Apellido;
         this.Password = Password;    
         this.Fecha_Nacimiento = Fecha_Nacimiento;
+        this.Rol = Rol;
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
         this.Path_Fotografia = Path_Fotografia;    

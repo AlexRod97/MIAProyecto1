@@ -146,12 +146,12 @@ public class LoginForm extends javax.swing.JFrame {
             if(password.equals(newUser.getPassword())) {                
              switch (newUser.getRol()) {
                 case 0:
-                    AdminForm admin = new AdminForm();                
-                    admin.show();
-                    break;
-                case 1:
                     UserForm userForm = new UserForm();                    
                     userForm.show();
+                    break;
+                case 1:
+                     AdminForm admin = new AdminForm();                
+                    admin.show();
                     break;
             
                 default:      

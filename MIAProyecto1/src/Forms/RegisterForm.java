@@ -42,7 +42,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
     String pathFoto; 
     boolean passwordSecure = false;
-    static boolean firstEntry = true;
     Usuario newUser = new Usuario();
     Classes.Secuencial secuencial;
     File selectedFile; 
@@ -343,7 +342,6 @@ public class RegisterForm extends javax.swing.JFrame {
             Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
                     ".txt");
             if (!Files.exists(path)) {
-                firstEntry = false;
                 
                 try{
                   secuencial = new Classes.Secuencial("Usuario",tfUsuario.getText()
