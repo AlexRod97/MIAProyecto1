@@ -31,6 +31,7 @@
                   <Component id="btnAgregar" pref="128" max="32767" attributes="0"/>
                   <Component id="btnEditar" max="32767" attributes="0"/>
                   <Component id="btnBaja" max="32767" attributes="0"/>
+                  <Component id="btnBackup" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
           </Group>
@@ -47,7 +48,9 @@
               <Component id="btnAgregar" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnBaja" min="-2" pref="48" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="btnBackup" min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,6 +86,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBajaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBackup">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear un backup"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackupActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -5,7 +5,13 @@
  */
 package Forms;
 
+import Classes.Secuencial;
 import Classes.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -14,7 +20,9 @@ import Classes.Usuario;
 public class AdminForm extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario(); 
-   
+    String pathBU = "";
+    Secuencial secuencial = new Secuencial(); 
+    
     public AdminForm() {
         initComponents();      
         this.setLocationRelativeTo(null);
@@ -35,6 +43,7 @@ public class AdminForm extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
+        btnBackup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Admin menu");
@@ -67,6 +76,13 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
+        btnBackup.setText("Crear un backup");
+        btnBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,7 +93,8 @@ public class AdminForm extends javax.swing.JFrame {
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBackup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
@@ -91,7 +108,9 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(btnBackup, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,6 +136,39 @@ public class AdminForm extends javax.swing.JFrame {
         bajas.show();
     }//GEN-LAST:event_btnBajaActionPerformed
 
+    private void btnBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackupActionPerformed
+        JFileChooser chooser = new JFileChooser();       
+        int retrival = chooser.showSaveDialog(null);
+        
+        if (retrival == JFileChooser.APPROVE_OPTION) {            
+            try {
+                pathBU = chooser.getCurrentDirectory().getAbsolutePath(); 
+                pathBU = pathBU + "MEIA_Backup"; 
+                secuencial.CrearArchivoBU(setFixedSize(), usuario.getUsuario()); 
+        
+            } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+        }
+    }//GEN-LAST:event_btnBackupActionPerformed
+
+    public String setFixedSize() {
+        StringBuilder line = new StringBuilder(); 
+        
+        line.append(usuario.ToFixedSizeString(pathBU, 200)); 
+        line.append("|"); 
+        
+        line.append(usuario.ToFixedSizeString(usuario.getUsuario(), 20)); 
+        line.append("|"); 
+        
+        Date date = Calendar.getInstance().getTime();
+        DateFormat formatter = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+        String today = formatter.format(date);
+        
+        line.append(today); 
+        
+        return line.toString();        
+    }
     /**
      * @param args the command line arguments
      */
@@ -154,6 +206,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBackup;
     private javax.swing.JButton btnBaja;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;

@@ -293,6 +293,21 @@ public class Secuencial {
      * @return 
      * @throws java.io.IOException 
      */
+    
+    public static void CrearArchivoBU(String line, String user) {
+        try {
+          File file = new File("C:\\MEIA\\bitacora_Backup.txt"); 
+          FileWriter Escribir = new FileWriter(file,true);
+          BufferedWriter bw = new BufferedWriter(Escribir);
+          bw.write(line + System.getProperty( "line.separator" ));
+          bw.close();
+          Escribir.close();   
+          
+        } catch(IOException ex) {            
+          }
+    }
+    
+    
     public static boolean Escribir(String dato,String nombreMaster,
             String nombreAdmin)
     throws IOException, NullPointerException{

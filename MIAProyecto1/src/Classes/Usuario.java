@@ -157,7 +157,7 @@ public class Usuario{
         }         
     }
     
-    private String ToFixedSizeString(String word, int count) {
+    public String ToFixedSizeString(String word, int count) {
     String result = ""; 	
     int complement = count - word.length();
       for(int i = 0; i < complement; i++) {
