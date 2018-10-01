@@ -143,7 +143,7 @@ public class LoginForm extends javax.swing.JFrame {
         try {            
         newUser = secuencial.ObtenerUsuario(user, "Usuario");
                
-            if(password.equals(newUser.getPassword())) {                
+            if(password.equals(newUser.getPassword()) && user.equals(newUser.getUsuario())) {                
              switch (newUser.getRol()) {
                 case 0:
                     UserForm userForm = new UserForm();                    
@@ -160,7 +160,7 @@ public class LoginForm extends javax.swing.JFrame {
              }
             }
             else {
-            JOptionPane.showMessageDialog(null, "La contraseña ingresada no es correcta", "Error",WIDTH);
+            JOptionPane.showMessageDialog(null, "El usuario o contraseña no es correcto", "Error",WIDTH);
             }
         }
         catch(Exception e) {

@@ -177,7 +177,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
         lblSeguridad.setText("Nivel de seguridad: ");
 
-        tfPassword.setText("Paalrosu13@");
+        tfPassword.setText("Paalrosu14@");
         tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfPasswordKeyReleased(evt);

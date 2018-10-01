@@ -127,7 +127,7 @@ public class BajasForm extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog((Component) null, "¿Desea dar de baja a este usuario? ","Confirmación", JOptionPane.OK_CANCEL_OPTION);
        
        try {
-            if(usuario.getRol() == 0) {
+            if(usuario.getRol() == 1) {
           JOptionPane.showMessageDialog(null, "El usuario es administrador y no puede darse de baja", "Error",WIDTH); 
         }
         else {

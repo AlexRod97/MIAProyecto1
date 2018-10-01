@@ -32,9 +32,9 @@ public class UserForm extends javax.swing.JFrame {
             LoginForm login = new LoginForm();
             usuario = login.newUser;
             lblDisplayUsuario.setText(usuario.getUsuario());
-            if(usuario.getRol() == 1) {
+            if(usuario.getRol() == 0) {
                 lblDisplayRol.setText("Usuario");
-            }
+            }             
             
             file = new File(usuario.getPath_Fotografia());
             image = ImageIO.read(file);
@@ -61,6 +61,7 @@ public class UserForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblDisplayRol = new javax.swing.JLabel();
         lblFotografia = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("User interface");
@@ -80,6 +81,13 @@ public class UserForm extends javax.swing.JFrame {
 
         lblFotografia.setText("Foto");
 
+        btnEditar.setText("Editar perfil");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,14 +105,21 @@ public class UserForm extends javax.swing.JFrame {
                             .addComponent(lblDisplayUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(lblFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(lblFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(lblFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
@@ -123,6 +138,16 @@ public class UserForm extends javax.swing.JFrame {
        
         //lblFotografia.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        try {
+            EditProfileForm edit = new EditProfileForm();
+            edit.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +185,7 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDisplayRol;
     private javax.swing.JLabel lblDisplayUsuario;
