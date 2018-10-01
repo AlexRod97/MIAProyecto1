@@ -30,10 +30,10 @@
                   <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tfUsuario" min="-2" pref="218" max="-2" attributes="0"/>
-                  <Component id="tfPassword" min="-2" pref="218" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="tfUsuario" pref="218" max="32767" attributes="0"/>
                   <Component id="lblLogin" alignment="1" min="-2" pref="208" max="-2" attributes="0"/>
+                  <Component id="tfPassword" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLogin" min="-2" pref="89" max="-2" attributes="0"/>
@@ -72,11 +72,11 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPassword" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="lblCrearUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnRegistrar" min="-2" pref="42" max="-2" attributes="0"/>
@@ -86,15 +86,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="tfPassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Paalrosu13@"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="tfUsuario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Alexrod97"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblUsuario">
       <Properties>
@@ -134,6 +126,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="tfPassword">
     </Component>
   </SubComponents>
 </Form>

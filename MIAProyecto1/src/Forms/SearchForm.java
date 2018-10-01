@@ -8,6 +8,7 @@ package Forms;
 import Classes.Secuencial;
 import Classes.Usuario;
 import static Forms.LoginForm.newUser;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,7 @@ public class SearchForm extends javax.swing.JFrame {
     public SearchForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**

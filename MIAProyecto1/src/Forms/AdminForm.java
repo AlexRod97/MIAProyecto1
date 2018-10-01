@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 /**
@@ -32,6 +33,7 @@ public class AdminForm extends javax.swing.JFrame {
         LoginForm login = new LoginForm(); 
         usuario = login.newUser; 
          secuencial = new Secuencial(usuario.getUsuario());
+         this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**

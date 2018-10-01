@@ -8,6 +8,7 @@ package Forms;
 import Classes.Secuencial;
 import Classes.Usuario;
 import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
@@ -24,7 +25,7 @@ public class LoginForm extends javax.swing.JFrame {
      
     public LoginForm() {
         initComponents();
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
         try{
             
            //ArchivoSecuencial = new Classes.Secuencial("usuario");
@@ -44,7 +45,6 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfPassword = new javax.swing.JTextField();
         tfUsuario = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
@@ -52,12 +52,9 @@ public class LoginForm extends javax.swing.JFrame {
         lblCrearUsuario = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
+        tfPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        tfPassword.setText("Paalrosu13@");
-
-        tfUsuario.setText("Alexrod97");
 
         lblUsuario.setText("Usuario:");
 
@@ -92,10 +89,10 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(lblUsuario)
                     .addComponent(lblPassword))
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addComponent(lblLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPassword))
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -124,10 +121,10 @@ public class LoginForm extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
-                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPassword)
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addComponent(lblCrearUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +218,11 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JTextField tfPassword;
+    private javax.swing.JPasswordField tfPassword;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage(ImageIcon imageIcon) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

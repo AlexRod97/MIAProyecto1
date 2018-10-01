@@ -36,6 +36,7 @@ public class EditProfileForm extends javax.swing.JFrame {
         tfFecha.setText(usuario.getFecha_Nacimiento());
         tfTelefono.setText(usuario.getTelefono());
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**

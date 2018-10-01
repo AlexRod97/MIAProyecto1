@@ -51,6 +51,7 @@ public class RegisterForm extends javax.swing.JFrame {
     public RegisterForm() {
         initComponents();
          this.setLocationRelativeTo(null);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**

@@ -9,6 +9,7 @@ import Classes.Secuencial;
 import Classes.Usuario;
 import static Forms.EditProfileForm.usuario;
 import java.awt.Component;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class BajasForm extends javax.swing.JFrame {
     public BajasForm() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**

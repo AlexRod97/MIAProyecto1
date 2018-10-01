@@ -28,6 +28,7 @@ public class UserForm extends javax.swing.JFrame {
         try {
             initComponents();
             this.setLocationRelativeTo(null);
+            this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
             LoginForm login = new LoginForm();
             usuario = login.newUser;
             lblDisplayUsuario.setText(usuario.getUsuario());
