@@ -5,6 +5,13 @@
  */
 package Forms;
 
+import Classes.Usuario;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -13,12 +20,30 @@ import javax.swing.ImageIcon;
  */
 public class UserForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UserForm
-     */
+    public static Usuario usuario = new Usuario(); 
+    File file; 
+    BufferedImage image; 
+    
     public UserForm() {
-        initComponents();
-        this.setLocationRelativeTo(null);
+        try {
+            initComponents();
+            this.setLocationRelativeTo(null);
+            LoginForm login = new LoginForm();
+            usuario = login.newUser;
+            lblDisplayUsuario.setText(usuario.getUsuario());
+            if(usuario.getRol() == 1) {
+                lblDisplayRol.setText("Usuario");
+            }
+            
+            file = new File(usuario.getPath_Fotografia());
+            image = ImageIO.read(file);
+            
+            lblFotografia.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
+        } catch (IOException ex) {
+            Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     /**

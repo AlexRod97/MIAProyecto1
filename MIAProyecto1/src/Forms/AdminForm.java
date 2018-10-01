@@ -61,6 +61,11 @@ public class AdminForm extends javax.swing.JFrame {
         });
 
         btnBaja.setText("Dar de baja");
+        btnBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +111,11 @@ public class AdminForm extends javax.swing.JFrame {
         RegisterForm register = new RegisterForm(); 
         register.show();
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        BajasForm bajas = new BajasForm(); 
+        bajas.show();
+    }//GEN-LAST:event_btnBajaActionPerformed
 
     /**
      * @param args the command line arguments

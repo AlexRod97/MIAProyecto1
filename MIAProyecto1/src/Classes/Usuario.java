@@ -213,8 +213,7 @@ public class Usuario{
             char pos = word.charAt(i); 
             if(pos != amber) {
                 newWord.append(pos);                 
-            }            
-                        
+            }           
         }
         return newWord.toString();
     }

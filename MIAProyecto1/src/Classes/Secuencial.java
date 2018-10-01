@@ -538,7 +538,7 @@ public class Secuencial {
             }  
         }
         
-        return null;
+        return temp;
     }
 }
     

@@ -149,8 +149,7 @@ public class LoginForm extends javax.swing.JFrame {
                     admin.show();
                     break;
                 case 1:
-                    UserForm userForm = new UserForm();
-                    //userForm.usuario = newUser;
+                    UserForm userForm = new UserForm();                    
                     userForm.show();
                     break;
             

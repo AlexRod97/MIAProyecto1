@@ -7,7 +7,13 @@ package Forms;
 
 import Classes.Secuencial;
 import Classes.Usuario;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -18,6 +24,9 @@ public class EditProfileForm extends javax.swing.JFrame {
     public static Usuario usuario = new Usuario(); 
     boolean passwordSecure = false;
     boolean passwordFlag = false; 
+    File selectedFile; 
+    BufferedImage image;
+    String pathFoto; 
     
     public EditProfileForm() {
         initComponents();
@@ -50,6 +59,8 @@ public class EditProfileForm extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         lblSeguridad = new javax.swing.JLabel();
         btnPassword = new javax.swing.JButton();
+        lblFoto = new javax.swing.JLabel();
+        btnFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,12 +108,21 @@ public class EditProfileForm extends javax.swing.JFrame {
             }
         });
 
+        lblFoto.setText("jLabel2");
+
+        btnFoto.setText("Cargar");
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -119,19 +139,32 @@ public class EditProfileForm extends javax.swing.JFrame {
                                 .addComponent(tfCorreo)
                                 .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPassword)
-                        .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(btnPassword))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))))
+                        .addGap(74, 74, 74)))
+                .addGap(24, 24, 24))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +187,7 @@ public class EditProfileForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -173,6 +206,12 @@ public class EditProfileForm extends javax.swing.JFrame {
       
       if(passwordSecure) {
         try {
+            if(image != null) {
+                pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
+                 selectedFile = new File(pathFoto);
+                ImageIO.write(image,"jpg",selectedFile);                 
+            }        
+            
            if (!passwordFlag) {
            usuario.setCorreo_Alterno(correo);
            usuario.setFecha_Nacimiento(fecha);
@@ -205,7 +244,7 @@ public class EditProfileForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tfPasswordKeyReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       this.hide();
+      this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordActionPerformed
@@ -214,6 +253,25 @@ public class EditProfileForm extends javax.swing.JFrame {
       tfPassword.setText("");
       JOptionPane.showMessageDialog(null, "Campo habilitado para edición", "Notificación",WIDTH);
     }//GEN-LAST:event_btnPasswordActionPerformed
+
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+       JFileChooser fileChooser = new JFileChooser();
+       FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+       fileChooser.setFileFilter(imageFilter);
+       int result = fileChooser.showOpenDialog(this);       
+       
+       try {           
+           if (result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();    
+            image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB); 
+            image = ImageIO.read(selectedFile);      
+           lblFoto.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
+        }           
+       }
+       catch(Exception e) {
+           
+       }
+    }//GEN-LAST:event_btnFotoActionPerformed
 
     public boolean CheckPasswordResults(String password) {     
         
@@ -287,10 +345,12 @@ public class EditProfileForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSeguridad;
     private javax.swing.JLabel lblTelefono;

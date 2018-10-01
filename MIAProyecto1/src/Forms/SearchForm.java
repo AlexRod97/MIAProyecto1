@@ -5,15 +5,20 @@
  */
 package Forms;
 
+import Classes.Secuencial;
+import Classes.Usuario;
+import static Forms.LoginForm.newUser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rodri
  */
 public class SearchForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SearchForm
-     */
+    Usuario usuario; 
+    Secuencial secuencial = new Secuencial(); 
+    
     public SearchForm() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -38,6 +43,11 @@ public class SearchForm extends javax.swing.JFrame {
         jLabel1.setText("Buscar:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,6 +78,24 @@ public class SearchForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       String user = tfBuscar.getText();
+       usuario = null;
+       try {
+         usuario = secuencial.ObtenerUsuario(user, "Usuario");
+         
+         if (usuario.getUsuario().equals(user)) {
+            JOptionPane.showMessageDialog(null, "El usuario seleccionado sí existe", "Busqueda",WIDTH);  
+         }
+         else if (!usuario.equals(user)){
+              JOptionPane.showMessageDialog(null, "El usuario seleccionado no existe", "Busqueda",WIDTH);
+         }
+       }
+       catch (Exception e) {           
+       }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments

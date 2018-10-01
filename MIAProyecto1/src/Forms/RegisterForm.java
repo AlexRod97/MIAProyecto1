@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Classes.Secuencial;
 import Classes.Usuario;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -152,6 +153,11 @@ public class RegisterForm extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -314,8 +320,17 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tfUsuarioActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
-        if(passwordSecure) {
+        Secuencial secuencial = new Secuencial(); 
+        Usuario temp = new Usuario();
+        
+        try {             
+            temp = secuencial.ObtenerUsuario(tfUsuario.getText(), "Usuario");
+        } catch (IOException ex) {
+            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if(!temp.equals(tfUsuario.getText())){
+         if(passwordSecure) {
             try {                 
             if(image != null) {
                 pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
@@ -356,6 +371,12 @@ public class RegisterForm extends javax.swing.JFrame {
        } else {
             JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH); 
         }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "El usuario seleccionado ya existe", "Error",WIDTH);  
+        }
+        
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
@@ -438,6 +459,10 @@ public class RegisterForm extends javax.swing.JFrame {
         String password = tfPassword.getText(); 
          passwordSecure = CheckPasswordResults(password);
     }//GEN-LAST:event_tfPasswordKeyReleased
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     public boolean CheckPasswordResults(String password) {     
         
