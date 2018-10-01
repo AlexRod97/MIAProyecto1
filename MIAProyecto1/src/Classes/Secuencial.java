@@ -42,13 +42,11 @@ public class Secuencial {
      
         CrearMaster(nombre);
         CrearArchivoDesc(nombre, usuarioMaster, reorg);
-        CrearBitacoraArchivo(nombre);   
-      //  CrearArchivoDescBU(nombre); 
-        
+        CrearBitacoraArchivo(nombre); 
     }
     
-    public Secuencial (String nombre) {
-      CrearArchivoDescBU(nombre);   
+    public Secuencial (String nombre) throws IOException {
+      CrearArchivoDescBU(nombre);    
     }
     
     public Secuencial() {

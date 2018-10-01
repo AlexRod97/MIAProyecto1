@@ -31,7 +31,6 @@
                   <Component id="lblApellido" min="-2" max="-2" attributes="0"/>
                   <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRol" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -43,41 +42,31 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfUsuario" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                      <Component id="lblRegistrar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfNombre" alignment="0" pref="217" max="32767" attributes="0"/>
-                                          <Component id="tfApellido" alignment="0" pref="217" max="32767" attributes="0"/>
-                                          <Component id="tfPassword" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblTelefono" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFechaNacimiento" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblEstatus" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="tfUsuario" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="lblRegistrar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="tfRol" min="-2" pref="217" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tfNombre" alignment="0" pref="217" max="32767" attributes="0"/>
+                                  <Component id="tfApellido" alignment="0" pref="217" max="32767" attributes="0"/>
+                                  <Component id="tfPassword" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblTelefono" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCorreo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFechaNacimiento" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="tfEstatus" max="32767" attributes="0"/>
                           <Component id="tfNacimiento" alignment="1" pref="217" max="32767" attributes="0"/>
                           <Component id="tfCorreo" alignment="1" pref="217" max="32767" attributes="0"/>
                           <Component id="tfTelefono" alignment="1" pref="217" max="32767" attributes="0"/>
@@ -148,26 +137,12 @@
                       <Component id="lblSeguridad" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="lblRol" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEstatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnRegistrar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="btnCancelar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnRegistrar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,32 +201,50 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alexrod97"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfUsuarioActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfUsuarioKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alexander"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfNombreKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfApellido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rodriguez"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfApellidoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfNacimiento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="28/05/1997"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfNacimientoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfCorreo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="alex@gmail.com"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfCorreoKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfTelefono">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="30115893"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfTelefonoKeyTyped"/>
       </Events>
@@ -285,27 +278,10 @@
         <Property name="text" type="java.lang.String" value="Nivel de seguridad: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblRol">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rol:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfRol">
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfRolKeyTyped"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="tfEstatus">
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfEstatusKeyTyped"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblEstatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Estatus:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JPasswordField" name="tfPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Paalrosu14@"/>
+      </Properties>
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPasswordKeyReleased"/>
       </Events>

@@ -81,10 +81,6 @@ public class RegisterForm extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btnFoto = new javax.swing.JButton();
         lblSeguridad = new javax.swing.JLabel();
-        lblRol = new javax.swing.JLabel();
-        tfRol = new javax.swing.JTextField();
-        tfEstatus = new javax.swing.JTextField();
-        lblEstatus = new javax.swing.JLabel();
         tfPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -111,6 +107,7 @@ public class RegisterForm extends javax.swing.JFrame {
         lblRegistrar.setFont(new java.awt.Font("sansserif", 1, 60)); // NOI18N
         lblRegistrar.setText("Registrar");
 
+        tfUsuario.setText("Alexrod97");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -122,30 +119,35 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
+        tfNombre.setText("Alexander");
         tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNombreKeyTyped(evt);
             }
         });
 
+        tfApellido.setText("Rodriguez");
         tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfApellidoKeyTyped(evt);
             }
         });
 
+        tfNacimiento.setText("28/05/1997");
         tfNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNacimientoKeyTyped(evt);
             }
         });
 
+        tfCorreo.setText("alex@gmail.com");
         tfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfCorreoKeyTyped(evt);
             }
         });
 
+        tfTelefono.setText("30115893");
         tfTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfTelefonoKeyTyped(evt);
@@ -175,22 +177,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
         lblSeguridad.setText("Nivel de seguridad: ");
 
-        lblRol.setText("Rol:");
-
-        tfRol.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfRolKeyTyped(evt);
-            }
-        });
-
-        tfEstatus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfEstatusKeyTyped(evt);
-            }
-        });
-
-        lblEstatus.setText("Estatus:");
-
+        tfPassword.setText("Paalrosu14@");
         tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfPasswordKeyReleased(evt);
@@ -207,8 +194,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addComponent(lblPassword)
                     .addComponent(lblApellido)
                     .addComponent(lblUsuario)
-                    .addComponent(lblNombre)
-                    .addComponent(lblRol))
+                    .addComponent(lblNombre))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -218,32 +204,25 @@ public class RegisterForm extends javax.swing.JFrame {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addComponent(lblRegistrar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                            .addComponent(tfApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                            .addComponent(tfPassword))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblTelefono)
-                                            .addComponent(lblCorreo)
-                                            .addComponent(lblFechaNacimiento)
-                                            .addComponent(lblEstatus)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(lblSeguridad)))
-                                .addGap(18, 18, 18))
+                            .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfRol, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(154, 154, 154)))
+                                .addGap(91, 91, 91)
+                                .addComponent(lblRegistrar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                    .addComponent(tfApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                    .addComponent(tfPassword))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblTelefono)
+                                    .addComponent(lblCorreo)
+                                    .addComponent(lblFechaNacimiento)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblSeguridad)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfEstatus)
                             .addComponent(tfNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(tfCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(tfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
@@ -295,21 +274,11 @@ public class RegisterForm extends javax.swing.JFrame {
                             .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSeguridad)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lblRol))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEstatus))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -322,45 +291,40 @@ public class RegisterForm extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Secuencial secuencial = new Secuencial(); 
         Usuario temp = new Usuario();
-        
-        try {             
-            temp = secuencial.ObtenerUsuario(tfUsuario.getText(), "Usuario");
-        } catch (IOException ex) {
-            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if(!temp.equals(tfUsuario.getText())){
-         if(passwordSecure) {
-             
-            try {  
-                
-            if(image != null) {
-                pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg"; 
-                 selectedFile = new File(pathFoto);
-                ImageIO.write(image,"jpg",selectedFile);                 
-            }        
-            
-            newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(),newUser.Encriptar(tfPassword.getText()), Integer.valueOf(tfRol.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto,Integer.valueOf(tfEstatus.getText())); 
-            
-            Path path = Paths.get("C:\\MEIA\\desc_Usuario" + 
-                    ".txt");
-            if (!Files.exists(path)) {
-                
-                try{
-                  secuencial = new Classes.Secuencial("Usuario",tfUsuario.getText()
-                       ,"5");
+        String cadena = ""; 
+         try {
+             if(passwordSecure) {
+                    if (checkDate(tfNacimiento.getText())) {
+                        if(image != null) {
+                        pathFoto = "C:\\MEIA\\fotografias\\"+tfUsuario.getText() + ".jpg";
+                        selectedFile = new File(pathFoto);
+                        ImageIO.write(image,"jpg",selectedFile);
+                        newUser = new Usuario(tfUsuario.getText(), tfNombre.getText(), tfApellido.getText(),newUser.Encriptar(tfPassword.getText()), tfNacimiento.getText(), tfCorreo.getText(),Integer.valueOf(tfTelefono.getText()), pathFoto); 
+                        Path path = Paths.get("C:\\MEIA\\desc_Usuario" + ".txt");  
+                         if(!Files.exists(path)) {
+                        secuencial = new Classes.Secuencial("Usuario",tfUsuario.getText() ,"5");
                   
-                  //formatear el archivo Usuario
-                  newUser.setRol(1);
-                  newUser.setEstatus(1);
-                  String add = newUser.setFixedSizeString();
-                  Classes.Secuencial.Escribir(add, "Usuario", 
-                          newUser.getUsuario());
-                   JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
-                }catch (IOException e){
-                    
-                    e.printStackTrace();
+                        //formatear el archivo Usuario
+                        newUser.setRol(1);
+                        String add = newUser.setFixedSizeString();
+                        Classes.Secuencial.Escribir(add, "Usuario", newUser.getUsuario());
+                        JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
+                        } else {
+                        newUser.setRol(0);
+                        String add = newUser.setFixedSizeString();
+                        Classes.Secuencial.Escribir(add, "Usuario", newUser.getUsuario());
+                        JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
+                        } // end else flie exist
+                    }
+                    else {
+                      JOptionPane.showMessageDialog(null, "Debe seleccionar una foto de perfil", "Error",WIDTH);
+                    }
+                   }
+                    else {
+                       JOptionPane.showMessageDialog(null, "Error ingresando la fecha, formato: dd/mm/yyyy", "Error",WIDTH); 
+                    } // end date 
                 }
+<<<<<<< HEAD
             }else{
                     newUser.setRol(0);
                     newUser.setEstatus(1);
@@ -376,10 +340,15 @@ public class RegisterForm extends javax.swing.JFrame {
             
        } else {
             JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH); 
+=======
+                else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
+                }//end compare passwordsecure
+>>>>>>> 4b845807d174f055e06fcfbc7bef808a9bd4db2b
         }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "El usuario seleccionado ya existe", "Error",WIDTH);  
+        
+        catch (Exception ex) {
+            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 
@@ -426,13 +395,6 @@ public class RegisterForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfApellidoKeyTyped
 
-    private void tfRolKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfRolKeyTyped
-        if(tfRol.getText().length() >=1 ) {
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 1 caracter"); 
-        }
-    }//GEN-LAST:event_tfRolKeyTyped
-
     private void tfNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNacimientoKeyTyped
        if(tfNacimiento.getText().length() >= 10) {
             evt.consume();
@@ -453,13 +415,6 @@ public class RegisterForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 8 caracteres"); 
         }
     }//GEN-LAST:event_tfTelefonoKeyTyped
-
-    private void tfEstatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfEstatusKeyTyped
-        if(tfEstatus.getText().length() >= 1) {
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "No puede ingresar más de 1 caracteres"); 
-        }
-    }//GEN-LAST:event_tfEstatusKeyTyped
 
     private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
         String password = tfPassword.getText(); 
@@ -505,6 +460,28 @@ public class RegisterForm extends javax.swing.JFrame {
              return false; 
             
     }
+    
+    private boolean checkDate(String date) {
+        boolean result = true; 
+        
+        if (date.length() != 10) {
+            result = false; 
+        } else      
+        if(!String.valueOf(date.charAt(2)).equals("/") || !String.valueOf(date.charAt(5)).equals("/") ) {
+            result = false;            
+        }
+        else {
+            for (int i = 0; i < date.length(); i++) {
+                char pos = date.charAt(i);
+                if(Character.isAlphabetic(pos)) {
+                 result = false;   
+                }                
+            }
+        } 
+            
+        
+        return result;
+    }
     /**
      * @param args the command line arguments
      */
@@ -546,23 +523,19 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblEstatus;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRegistrar;
-    private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblSeguridad;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JTextField tfApellido;
     private javax.swing.JTextField tfCorreo;
-    private javax.swing.JTextField tfEstatus;
     private javax.swing.JTextField tfNacimiento;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JPasswordField tfPassword;
-    private javax.swing.JTextField tfRol;
     private javax.swing.JTextField tfTelefono;
     private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables

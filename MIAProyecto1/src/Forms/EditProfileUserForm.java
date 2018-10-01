@@ -7,11 +7,10 @@ package Forms;
 
 import Classes.Secuencial;
 import Classes.Usuario;
+import static Forms.AdminForm.usuario;
+import static Forms.EditProfileForm.usuario;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -22,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author rodri
  */
-public class EditProfileForm extends javax.swing.JFrame {
+public class EditProfileUserForm extends javax.swing.JFrame {
 
     public static Usuario usuario = new Usuario(); 
     boolean passwordSecure = false;
@@ -31,15 +30,8 @@ public class EditProfileForm extends javax.swing.JFrame {
     BufferedImage image;
     String pathFoto; 
     
-    public EditProfileForm() throws IOException {
+    public EditProfileUserForm() {
         initComponents();
-        AdminForm admin = new AdminForm(); 
-        usuario = admin.usuario; 
-        tfCorreo.setText(usuario.getCorreo_Alterno());
-        tfFecha.setText(usuario.getFecha_Nacimiento());
-        tfTelefono.setText(usuario.getTelefono());
-        this.setLocationRelativeTo(null);
-        this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
     }
 
     /**
@@ -51,38 +43,22 @@ public class EditProfileForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTelefono = new javax.swing.JLabel();
-        tfPassword = new javax.swing.JTextField();
-        tfFecha = new javax.swing.JTextField();
-        tfCorreo = new javax.swing.JTextField();
-        tfTelefono = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblSeguridad = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
         btnPassword = new javax.swing.JButton();
+        tfPassword = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
+        tfFecha = new javax.swing.JTextField();
         btnFoto = new javax.swing.JButton();
+        tfCorreo = new javax.swing.JTextField();
+        tfTelefono = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        lblTelefono.setText("Telefono");
-
-        tfPassword.setText("Deshabilitado");
-        tfPassword.setToolTipText("");
-        tfPassword.setEnabled(false);
-        tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfPasswordKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfPasswordKeyTyped(evt);
-            }
-        });
-
-        jLabel1.setText("Correo alterno:");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblFecha.setText("lblFecha");
 
@@ -105,10 +81,24 @@ public class EditProfileForm extends javax.swing.JFrame {
 
         lblSeguridad.setText("Nivel de seguridad: ");
 
+        lblTelefono.setText("Telefono");
+
         btnPassword.setText("Cambiar");
         btnPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPasswordActionPerformed(evt);
+            }
+        });
+
+        tfPassword.setText("Deshabilitado");
+        tfPassword.setToolTipText("");
+        tfPassword.setEnabled(false);
+        tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfPasswordKeyTyped(evt);
             }
         });
 
@@ -119,54 +109,57 @@ public class EditProfileForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Correo alterno:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFecha)
-                            .addComponent(jLabel1)
-                            .addComponent(lblPassword)
-                            .addComponent(lblTelefono))
-                        .addGap(18, 18, 18)
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSeguridad)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfFecha)
-                                .addComponent(tfTelefono)
-                                .addComponent(tfCorreo)
-                                .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPassword))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFecha)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lblPassword)
+                                    .addComponent(lblTelefono))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSeguridad)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(tfFecha)
+                                        .addComponent(tfTelefono)
+                                        .addComponent(tfCorreo)
+                                        .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPassword))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)))
-                .addGap(24, 24, 24))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(26, 26, 26)
                         .addComponent(btnFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,90 +182,90 @@ public class EditProfileForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String password = usuario.Encriptar(tfPassword.getText());
+        String correo = tfCorreo.getText();
+        String fecha = tfFecha.getText();
+        String telefono = tfTelefono.getText();
+        Secuencial secuencial = new Secuencial();
+
+        if(passwordSecure) {
+            try {
+                if(image != null) {
+                    pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
+                    selectedFile = new File(pathFoto);
+                    ImageIO.write(image,"jpg",selectedFile);
+                }
+
+                if (!passwordFlag) {
+                    usuario.setCorreo_Alterno(correo);
+                    usuario.setFecha_Nacimiento(fecha);
+                    usuario.setTelefono(Integer.valueOf(telefono));
+                }
+                else {
+                    usuario.setPassword(password);
+                    usuario.setCorreo_Alterno(correo);
+                    usuario.setFecha_Nacimiento(fecha);
+                    usuario.setTelefono(Integer.valueOf(telefono));
+                    passwordSecure = true;
+                }
+                String newFixedSize = usuario.setFixedSizeString();
+
+                secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+
+            }catch (Exception e) {
+
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
+        }
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordActionPerformed
+        tfPassword.enable(true);
+        passwordFlag = true;
+        tfPassword.setText("");
+        JOptionPane.showMessageDialog(null, "Campo habilitado para edición", "Notificación",WIDTH);
+    }//GEN-LAST:event_btnPasswordActionPerformed
+
+    private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
+        String password = tfPassword.getText();
+        passwordSecure = CheckPasswordResults(password);
+    }//GEN-LAST:event_tfPasswordKeyReleased
+
     private void tfPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordKeyTyped
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       String password = usuario.Encriptar(tfPassword.getText()); 
-       String correo = tfCorreo.getText();
-       String fecha = tfFecha.getText(); 
-       String telefono = tfTelefono.getText();
-       Secuencial secuencial = new Secuencial(); 
-      
-      if(passwordSecure) {
-        try {
-            if(image != null) {
-                pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
-                 selectedFile = new File(pathFoto);
-                ImageIO.write(image,"jpg",selectedFile);                 
-            }        
-            
-           if (!passwordFlag) {
-           usuario.setCorreo_Alterno(correo);
-           usuario.setFecha_Nacimiento(fecha);
-           usuario.setTelefono(Integer.valueOf(telefono));
-       }
-       else {
-           usuario.setPassword(password);
-           usuario.setCorreo_Alterno(correo);
-           usuario.setFecha_Nacimiento(fecha);
-           usuario.setTelefono(Integer.valueOf(telefono));      
-           passwordSecure = true;
-       }
-       String newFixedSize = usuario.setFixedSizeString();
-       
-       secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
-          
-      }catch (Exception e) {
-          
-       }
-      } 
-      else {
-           JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
-      }
-      
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void tfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPasswordKeyReleased
-         String password = tfPassword.getText(); 
-         passwordSecure = CheckPasswordResults(password);
-    }//GEN-LAST:event_tfPasswordKeyReleased
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-      this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasswordActionPerformed
-      tfPassword.enable(true);
-      passwordFlag = true;
-      tfPassword.setText("");
-      JOptionPane.showMessageDialog(null, "Campo habilitado para edición", "Notificación",WIDTH);
-    }//GEN-LAST:event_btnPasswordActionPerformed
-
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
-       JFileChooser fileChooser = new JFileChooser();
-       FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
-       fileChooser.setFileFilter(imageFilter);
-       int result = fileChooser.showOpenDialog(this);       
-       
-       try {           
-           if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();    
-            image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB); 
-            image = ImageIO.read(selectedFile);      
-           lblFoto.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
-        }           
-       }
-       catch(Exception e) {
-           
-       }
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
+        fileChooser.setFileFilter(imageFilter);
+        int result = fileChooser.showOpenDialog(this);
+
+        try {
+            if (result == JFileChooser.APPROVE_OPTION) {
+                selectedFile = fileChooser.getSelectedFile();
+                image = new BufferedImage(100,100,BufferedImage.TYPE_INT_ARGB);
+                image = ImageIO.read(selectedFile);
+                lblFoto.setIcon(new ImageIcon(image.getScaledInstance(100,100,100)));
+            }
+        }
+        catch(Exception e) {
+
+        }
     }//GEN-LAST:event_btnFotoActionPerformed
 
     public boolean CheckPasswordResults(String password) {     
@@ -309,7 +302,7 @@ public class EditProfileForm extends javax.swing.JFrame {
          else 
              return false; 
             
-    }    
+    }   
     /**
      * @param args the command line arguments
      */
@@ -327,24 +320,20 @@ public class EditProfileForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProfileUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProfileUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProfileUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditProfileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditProfileUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new EditProfileForm().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(EditProfileForm.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new EditProfileUserForm().setVisible(true);
             }
         });
     }
