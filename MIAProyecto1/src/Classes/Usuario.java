@@ -47,7 +47,7 @@ public class Usuario{
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
         this.Path_Fotografia = Path_Fotografia;    
-        Estatus = 1;
+        this.Estatus = 1;
     }
    
     public String getUsuario() {

@@ -79,6 +79,11 @@ public class Utilidades {
             master.delete();
             renameFile(tmpDir, Master);
             
+            File tmpBit = new File("C:\\MEIA\\bitacora_bit.txt");
+            
+            File bit = new File(pathBitacora);
+            bit.delete();
+            renameFile(tmpBit,"bitacora_" + Master + ".txt");
         }
         
         

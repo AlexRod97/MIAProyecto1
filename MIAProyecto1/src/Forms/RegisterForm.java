@@ -367,6 +367,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     String add = newUser.setFixedSizeString();
                     Classes.Secuencial.Escribir(add, "Usuario", 
                           newUser.getUsuario());
+                    JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH);
             }
         } catch (Exception ex) {
 
