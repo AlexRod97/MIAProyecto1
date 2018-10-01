@@ -302,9 +302,55 @@ public class Secuencial {
           bw.write(line + System.getProperty( "line.separator" ));
           bw.close();
           Escribir.close();   
+          CrearArchivoDescBU(user);
           
-        } catch(IOException ex) {            
+        } catch(Exception ex) {            
           }
+    }
+    
+    private static void CrearArchivoDescBU(String user) throws Exception {
+      File file = new File("C:\\MEIA\\desc_bitacora_Backup.txt");
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr);    
+      
+      List<String> datos = br.lines().collect(Collectors.toList());
+      List<String> info = new ArrayList<>();
+      for (int i = 0; i < datos.size(); i++){
+               
+                String[] temp = datos.get(i).trim().split(": ");
+                if (temp[1] == "" || temp[1] == null) {
+                    info.add("");
+                }
+                info.add(temp[1]);
+            }
+       
+      br.close();            
+        
+      FileWriter fw = new FileWriter(file);
+      BufferedWriter bw = new BufferedWriter(fw);
+      
+      bw.append("nombre_simbolico: bitacora_Backup");
+      bw.append("\r\n");
+       
+      //formateamos la fecha:
+      Date date = Calendar.getInstance().getTime();
+        
+      DateFormat formatter = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+      String today = formatter.format(date);
+       
+      bw.append("fecha_creacion: " + info.get(1));
+      bw.append("\r\n");
+      bw.append("usuario_creacion: " + info.get(2));
+      bw.append("\r\n");
+      bw.append("fecha_modificacion: " + today);
+      bw.append("\r\n");
+      bw.append("usuario_modificacion: " + user);
+      bw.append("\r\n");
+      bw.append("#_registros: " + info.size());
+      bw.flush();
+      bw.close();      
+            
+      
     }
     
     
