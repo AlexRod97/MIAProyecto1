@@ -61,7 +61,16 @@ public class Utilidades {
             BufferedWriter bw = new BufferedWriter(fw);
                               
             for (int i = 0; i < datosMaster.size(); i++) {
-                bw.append(datosMaster.get(i) + "\r\n");
+                //validar si status es 1, de lo contrario no agregar
+                
+                String[] datos = datosMaster.get(i).replace("&", "")
+                        .split("\\|");
+                
+                if (!datos[8].equals("0")) {
+                    bw.append(datosMaster.get(i) + "\r\n");
+                }
+                
+                
             }
             
             bw.close();

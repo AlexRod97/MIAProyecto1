@@ -540,6 +540,84 @@ public class Secuencial {
         
         return temp;
     }
+    
+    /**
+     * llamar cuando se modifique el estatus a 0 de un usuario en la BITACORA
+     * @param master
+     * @param AdminUser
+     * @return
+     * @throws IOException 
+     */
+    public static boolean ModificarInactivoDesc(String master, String AdminUser) 
+            throws IOException{
+        
+        File file = new File("C:\\MEIA\\desc_" + master + ".txt");
+        
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        
+        boolean flag = file.exists();
+        
+        if (flag) {
+            List<String> datos = br.lines().collect(Collectors.toList());
+            List<String> info = new ArrayList<>();
+        
+            for (int i = 0; i < datos.size(); i++){
+               
+                String[] temp = datos.get(i).trim().split(": ");
+                if (temp[1] == "" || temp[1] == null) {
+                    info.add("");
+                }
+                info.add(temp[1]);
+            }
+        
+            br.close();
+        
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+        
+        
+           int numReg = Integer.parseInt(info.get(5));
+        
+            int activeReg = Integer.parseInt(info.get(6));
+            activeReg = activeReg - 1;
+        
+            int inactReg = Integer.parseInt(info.get(7));
+            inactReg = numReg - activeReg; 
+        
+        
+            bw.append("nombre_simbolico: " + master);
+            bw.append("\r\n");
+       
+            //formateamos la fecha:
+            Date date = Calendar.getInstance().getTime();
+        
+            DateFormat formatter = new SimpleDateFormat(
+                   "EEEE, dd MMMM yyyy, hh:mm:ss.SSS a");
+            String today = formatter.format(date);
+        
+            bw.append("fecha_creacion: " + info.get(1));
+            bw.append("\r\n");
+            bw.append("usuario_creacion: " + info.get(2));
+            bw.append("\r\n");
+            bw.append("fecha_modificacion: " + today);
+            bw.append("\r\n");
+            bw.append("usuario_modificacion: " + AdminUser);
+            bw.append("\r\n");
+            bw.append("#_registros: " + info.get(5));
+            bw.append("\r\n");
+            bw.append("registros_activos: " + activeReg);
+            bw.append("\r\n");
+            bw.append("registros_inactivos: " + inactReg);
+            bw.append("\r\n");
+            bw.append("max_reorganizacion: " + info.get(8));
+            bw.flush();
+            bw.close();
+        }
+        
+        
+        return true;
+    }
 }
     
     
