@@ -69,7 +69,8 @@ public class Usuario{
     public String getApellido() {
         return Apellido;
     }
-
+    
+    //setea el apellido
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
     }
