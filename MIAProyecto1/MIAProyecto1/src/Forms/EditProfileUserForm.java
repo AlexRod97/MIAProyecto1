@@ -194,10 +194,9 @@ public class EditProfileUserForm extends javax.swing.JFrame {
         String fecha = tfFecha.getText();
         String telefono = tfTelefono.getText();
         Secuencial secuencial = new Secuencial();
-
-        if(passwordSecure) {
-            try {
-                if(image != null) {
+        
+         try {
+            if(image != null) {
                     pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
                     selectedFile = new File(pathFoto);
                     ImageIO.write(image,"jpg",selectedFile);
@@ -207,25 +206,27 @@ public class EditProfileUserForm extends javax.swing.JFrame {
                     usuario.setCorreo_Alterno(correo);
                     usuario.setFecha_Nacimiento(fecha);
                     usuario.setTelefono(Integer.valueOf(telefono));
+                    passwordSecure = true;
                 }
                 else {
                     usuario.setPassword(password);
                     usuario.setCorreo_Alterno(correo);
                     usuario.setFecha_Nacimiento(fecha);
-                    usuario.setTelefono(Integer.valueOf(telefono));
-                    passwordSecure = true;
+                    usuario.setTelefono(Integer.valueOf(telefono));                    
                 }
                 String newFixedSize = usuario.setFixedSizeString();
-
-                secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+                
+                if(passwordSecure) {
+                    secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+                    JOptionPane.showMessageDialog(null, "Los datos han sido actualizados", "Notificación",WIDTH); 
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
+                }
 
             }catch (Exception e) {
 
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
-        }
+            }               
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

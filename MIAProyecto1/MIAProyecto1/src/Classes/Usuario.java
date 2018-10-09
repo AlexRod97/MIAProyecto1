@@ -47,8 +47,7 @@ public class Usuario{
         this.Correo_Alterno = Correo_Alterno;
         this.Telefono = Telefono;
         this.Path_Fotografia = Path_Fotografia;    
-        this.Estatus = 1;
-
+        this.Estatus = Estatus;
     }
      
      public Usuario(String Usuario, String Nombre, String Apellido, String Password, String Fecha_Nacimiento, String Correo_Alterno, int Telefono, String Path_Fotografia) {
@@ -82,8 +81,7 @@ public class Usuario{
     public String getApellido() {
         return Apellido;
     }
-    
-    //setea el apellido
+
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
     }
@@ -312,7 +310,7 @@ public class Usuario{
    
    public static int TamanioFijo(){
        
-       return 489;
+       return 389;
        
    }
 }

@@ -206,37 +206,38 @@ public class EditProfileForm extends javax.swing.JFrame {
        String telefono = tfTelefono.getText();
        Secuencial secuencial = new Secuencial(); 
       
-      if(passwordSecure) {
         try {
             if(image != null) {
-                pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
-                 selectedFile = new File(pathFoto);
-                ImageIO.write(image,"jpg",selectedFile);                 
-            }        
-            
-           if (!passwordFlag) {
-           usuario.setCorreo_Alterno(correo);
-           usuario.setFecha_Nacimiento(fecha);
-           usuario.setTelefono(Integer.valueOf(telefono));
-       }
-       else {
-           usuario.setPassword(password);
-           usuario.setCorreo_Alterno(correo);
-           usuario.setFecha_Nacimiento(fecha);
-           usuario.setTelefono(Integer.valueOf(telefono));      
-           passwordSecure = true;
-       }
-       String newFixedSize = usuario.setFixedSizeString();
-       
-       secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
-          
-      }catch (Exception e) {
-          
-       }
-      } 
-      else {
-           JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
-      }
+                    pathFoto = "C:\\MEIA\\fotografias\\"+usuario.getUsuario() + ".jpg"; 
+                    selectedFile = new File(pathFoto);
+                    ImageIO.write(image,"jpg",selectedFile);
+                }
+
+                if (!passwordFlag) {
+                    usuario.setCorreo_Alterno(correo);
+                    usuario.setFecha_Nacimiento(fecha);
+                    usuario.setTelefono(Integer.valueOf(telefono));
+                    passwordSecure = true;
+                }
+                else {
+                    usuario.setPassword(password);
+                    usuario.setCorreo_Alterno(correo);
+                    usuario.setFecha_Nacimiento(fecha);
+                    usuario.setTelefono(Integer.valueOf(telefono));                    
+                }
+                String newFixedSize = usuario.setFixedSizeString();
+                
+                if(passwordSecure) {
+                    secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+                    JOptionPane.showMessageDialog(null, "Los datos han sido actualizados", "Notificación",WIDTH); 
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
+                }
+
+            }catch (Exception e) {
+
+            } 
       
     }//GEN-LAST:event_btnGuardarActionPerformed
 

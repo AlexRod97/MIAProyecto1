@@ -107,7 +107,6 @@ public class RegisterForm extends javax.swing.JFrame {
         lblRegistrar.setFont(new java.awt.Font("sansserif", 1, 60)); // NOI18N
         lblRegistrar.setText("Registrar");
 
-        tfUsuario.setText("Alexrod97");
         tfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUsuarioActionPerformed(evt);
@@ -119,35 +118,30 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
-        tfNombre.setText("Alexander");
         tfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNombreKeyTyped(evt);
             }
         });
 
-        tfApellido.setText("Rodriguez");
         tfApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfApellidoKeyTyped(evt);
             }
         });
 
-        tfNacimiento.setText("28/05/1997");
         tfNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfNacimientoKeyTyped(evt);
             }
         });
 
-        tfCorreo.setText("alex@gmail.com");
         tfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfCorreoKeyTyped(evt);
             }
         });
 
-        tfTelefono.setText("30115893");
         tfTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfTelefonoKeyTyped(evt);
@@ -177,7 +171,6 @@ public class RegisterForm extends javax.swing.JFrame {
 
         lblSeguridad.setText("Nivel de seguridad: ");
 
-        tfPassword.setText("Paalrosu14@");
         tfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfPasswordKeyReleased(evt);
@@ -310,10 +303,17 @@ public class RegisterForm extends javax.swing.JFrame {
                         Classes.Secuencial.Escribir(add, "Usuario", newUser.getUsuario());
                         JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
                         } else {
-                        newUser.setRol(0);
-                        String add = newUser.setFixedSizeString();
-                        Classes.Secuencial.Escribir(add, "Usuario", newUser.getUsuario());
-                        JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH); 
+                        cadena = secuencial.Buscar(tfUsuario.getText(), "Usuario"); 
+                        if (cadena == null) {
+                            newUser.setRol(0);
+                            String add = newUser.setFixedSizeString();
+                            Classes.Secuencial.Escribir(add, "Usuario", newUser.getUsuario());
+                            JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH);                             
+                        }
+                        else {
+                          JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe, intente de nuevo", "Error",WIDTH);  
+                        }
+                        
                         } // end else flie exist
                     }
                     else {
@@ -324,27 +324,9 @@ public class RegisterForm extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(null, "Error ingresando la fecha, formato: dd/mm/yyyy", "Error",WIDTH); 
                     } // end date 
                 }
-<<<<<<< HEAD
-            }else{
-                    newUser.setRol(0);
-                    newUser.setEstatus(1);
-                    String add = newUser.setFixedSizeString();
-                    Classes.Secuencial.Escribir(add, "Usuario", 
-                          newUser.getUsuario());
-                    JOptionPane.showMessageDialog(null, "El usuario fue creado con éxito", "Notificación",WIDTH);
-            }
-        } catch (Exception ex) {
-
-            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-       } else {
-            JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH); 
-=======
                 else {
                     JOptionPane.showMessageDialog(null, "La contraseña no es segura, intenta de nuevo", "Error",WIDTH);
                 }//end compare passwordsecure
->>>>>>> 4b845807d174f055e06fcfbc7bef808a9bd4db2b
         }
         
         catch (Exception ex) {

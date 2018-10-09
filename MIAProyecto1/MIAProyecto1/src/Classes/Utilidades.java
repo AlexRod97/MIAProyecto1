@@ -75,15 +75,13 @@ public class Utilidades {
             
             bw.close();
             
-            File master = new File(pathMaster);
+            File master = new File(pathMaster);          
+            File bitacora = new File(pathBitacora);
+            FileWriter Escribir = new FileWriter(bitacora,false);
+            Escribir.close();
             master.delete();
             renameFile(tmpDir, Master);
             
-            File tmpBit = new File("C:\\MEIA\\bitacora_bit.txt");
-            
-            File bit = new File(pathBitacora);
-            bit.delete();
-            renameFile(tmpBit,"bitacora_" + Master + ".txt");
         }
         
         

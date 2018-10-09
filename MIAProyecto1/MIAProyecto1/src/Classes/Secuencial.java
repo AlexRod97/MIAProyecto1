@@ -272,7 +272,7 @@ public class Secuencial {
         return flag;
     }
     
-    private static boolean CrearBitacoraArchivo(String nombreMaster) 
+    public static boolean CrearBitacoraArchivo(String nombreMaster) 
             throws IOException{
         
         File file  = null;
@@ -283,7 +283,7 @@ public class Secuencial {
         file = new File(data);
         
         boolean flag = file.createNewFile();
-        
+       
         return flag;
         
     }

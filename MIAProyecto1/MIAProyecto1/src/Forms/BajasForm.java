@@ -9,6 +9,9 @@ import Classes.Secuencial;
 import Classes.Usuario;
 import static Forms.EditProfileForm.usuario;
 import java.awt.Component;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -18,13 +21,16 @@ import javax.swing.JOptionPane;
  */
 public class BajasForm extends javax.swing.JFrame {
 
-    Usuario usuario = new Usuario(); 
+    public static Usuario usuario = new Usuario(); 
+    Usuario temp = new Usuario();
     Secuencial secuencial = new Secuencial();
     
-    public BajasForm() {
+    public BajasForm() throws IOException {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(getClass().getResource("/Images/LOGO_MEIA2.png")).getImage());
+        AdminForm admin = new AdminForm(); 
+        usuario = admin.usuario; 
     }
 
     /**
@@ -107,14 +113,14 @@ public class BajasForm extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String user = tfBuscar.getText();
-        usuario = null;
+        
         try {
-            usuario = secuencial.ObtenerUsuario(user, "Usuario");
+            temp = secuencial.ObtenerUsuario(user, "Usuario");
 
-            if (usuario.getUsuario().equals(user)) {
-                lblDisplay.setText("Usuario a dar de baja: " + usuario.getUsuario());
+            if (temp.getUsuario().equals(user)) {
+                lblDisplay.setText("Usuario a dar de baja: " + temp.getUsuario());
             }
-            else if (!usuario.equals(user)){
+            else if (!temp.equals(user)){
                 JOptionPane.showMessageDialog(null, "El usuario seleccionado no existe", "Busqueda",WIDTH);
             }
         }
@@ -127,14 +133,15 @@ public class BajasForm extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog((Component) null, "¿Desea dar de baja a este usuario? ","Confirmación", JOptionPane.OK_CANCEL_OPTION);
        
        try {
-            if(usuario.getRol() == 1) {
+            if(temp.getRol() == 1) {
           JOptionPane.showMessageDialog(null, "El usuario es administrador y no puede darse de baja", "Error",WIDTH); 
         }
         else {
             if (result == 0) {
-                usuario.setEstatus(0);
-                String newFixedSize = usuario.setFixedSizeString();       
-                secuencial.Sobreescribir(newFixedSize, usuario.getUsuario(), "Usuario");
+                temp.setEstatus(0);
+                String newFixedSize = temp.setFixedSizeString();       
+                secuencial.Sobreescribir(newFixedSize, temp.getUsuario(), "Usuario");
+                secuencial.ModificarInactivoDesc("Usuario", usuario.getUsuario());
                 JOptionPane.showMessageDialog(null, "El usuario se ha dado de baja", "Busqueda",WIDTH); 
         }
        }
@@ -175,7 +182,11 @@ public class BajasForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BajasForm().setVisible(true);
+                try {
+                    new BajasForm().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(BajasForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
